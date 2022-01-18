@@ -376,44 +376,44 @@
                         <div class="carousel-item active" data-bs-interval="10000">
                             <div class="row h-100 align-items-center">
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italianFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Italian</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/chineseFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Chinese</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/indianFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Indian</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/mexicanFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Mexican</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/frenchFood.jpg') }}" />
                                 <div class="card-body ps-0">
-                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Mughalia</h5>
+                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">French</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/americanFood.jpg') }}" />
                                 <div class="card-body ps-0">
-                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Burmese</h5>
+                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">American</h5>
                                 </div>
                                 </div>
                             </div>
