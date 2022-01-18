@@ -16,6 +16,11 @@ class Recipe extends Model
         return 'storage/' .$this->image;
     }
 
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
     // SCOPES
     public function scopePublished($query)
     {

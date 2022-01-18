@@ -16,5 +16,5 @@ Route::get('/nutritions', function () {
     return view('nutritions.index');
 })->name('nutritions.index');
 
-Route::resource('blogs', BlogsController::class)->only('index');
+Route::resource('blogs', BlogsController::class)->only('index', 'show');
 Route::resource('recipes', RecipesController::class);
