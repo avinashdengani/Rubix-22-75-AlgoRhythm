@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Healthlabel;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class RecipesController extends Controller
@@ -17,12 +20,44 @@ class RecipesController extends Controller
 
     public function create()
     {
-        //
+        $healthlabels = Healthlabel::all();
+        return view('recipes.create', compact(['healthlabels']));
     }
 
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'cuisineType' => 'required|max:100',
+            'mealType' => 'required|max:100',
+            'dishType' => 'required|max:100',
+            'calories' => 'required|numeric',
+            'recipe' => 'required',
+            'healthlabel_id' => 'required|exists:healthlabels,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+        ];
+
+        $this->validate($request, $rules);
+
+        $image = $request->file('image')->store('images/recipes');
+
+        $recipe = Recipe::create([
+            'user_id' => auth()->user()->id,
+            'name' => $request->name,
+            'cuisineType' => $request->cuisineType,
+            'mealType' => $request->mealType,
+            'dishType' => $request->dishType,
+            'calories' => $request->calories,
+            'recipe' => $request->recipe,
+            'published_at' => $request->published_at,
+            'image' => $image
+        ]);
+
+        $recipe->healthlabels()->attach($request->healthlabel_id);
+
+        session()->flash('success', 'Recipe Created Successfully!');
+
+        return redirect()->back();
     }
 
     public function show($id)
