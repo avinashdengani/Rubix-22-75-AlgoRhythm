@@ -4,5 +4,213 @@
 // Variables
 @import 'variables';
 
+//Mixins
+@import "mixins";
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//ANIMATE.CSS
+@import url("~animate.css/animate.css");
+
+//OWL CAROUSEL
+@import url("~owl.carousel/dist/assets/owl.carousel.css");
+@import url("~owl.carousel/dist/assets/owl.theme.default.css");
+
+//FaltPickr Calendar
+@import url("~flatpickr/dist/flatpickr.min.css");
+@import url("~flatpickr/dist/themes/confetti.css");
+
+//Select2
+@import url("~select2/dist/css/select2.css");
+
+* {
+    font-family: "Bellota Text", Helvetica, Arial, sans-serif;
+}
+
+body{
+    background: white;
+}
+
+/* SELECTION COLOR */
+::selection {
+    background: #78e4ff;
+    color: #333;
+}
+body {
+    background: #ffffff;
+}
+/* SCROLLBAR */
+
+// width
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+// Track
+::-webkit-scrollbar-track {
+    box-shadow: inset 0px 0px 4px 0px #adb5bd;
+    border-radius: 0px;
+}
+
+//Handle
+::-webkit-scrollbar-thumb {
+    background-color: #b3b5b8 !important;
+    border-radius: 10px;
+}
+
+
+#back-to-top {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    right: 10px;
+}
+
+.text-yellow {
+    color: $yellow;
+}
+.bg-yellow {
+    background: $yellow;
+}
+.border-yellow {
+    border: 1px solid $yellow;
+}
+.text-darkgreen {
+    color: $darkgreen;
+}
+.bg-darkgreen {
+    background: $darkgreen;
+}
+.border-darkgreen {
+    border: 1px solid $darkgreen;
+}
+
+.text-lightgreen {
+    color: $lightgreen;
+}
+.bg-lightgreen {
+    background: $lightgreen;
+}
+.border-lightgreen {
+    border: 1px solid $lightgreen;
+}
+.text-cream {
+    color: $cream;
+}
+.bg-cream {
+    background: $cream;
+}
+.border-cream {
+    border: 1px solid $cream;
+}
+.text-lime {
+    color: $lime;
+}
+.bg-lime {
+    background: $lime;
+}
+.border-lime {
+    border: 1px solid $lime;
+}
+
+// Scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+  //DEFAULT-CARD
+.my-card {
+    -webkit-box-shadow: 0 0 40px #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 60px;
+}
+
+.my-card-border {
+    border: none !important;
+    &-top {
+        border-top: 5px solid $yellow !important;
+    }
+    &-radius {
+        border-radius: 20px !important;
+    }
+}
+
+// LOGIN PAGE
+.login {
+    &-side-image {
+        @include mediumScreen {
+            display: none !important;
+        }
+        @include smallScreen {
+            display: none !important;
+        }
+    }
+
+    &-body {
+        @include mediumScreen {
+            margin: auto;
+        }
+    }
+    &-last-row {
+        @include smallScreen {
+            & a {
+                font-size: 15px;
+                padding: 8px;
+            }
+            & button {
+                font-size: 15px;
+                padding: 8px;
+            }
+        }
+    }
+}
+//REGISTER PAGE
+.role {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    & + img {
+        cursor: pointer;
+    }
+
+    &:checked + img {
+        border-radius: 10px;
+        outline: 2px solid #d9eff7;
+    }
+}
+
+.register-as-btn {
+    background: #ffffff;
+    color: $orange;
+    border: solid 2px $orange;
+    padding: 0.375rem 0.75rem;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.section {
+    margin: 50px !important;
+    padding: 50px !important;
+}
