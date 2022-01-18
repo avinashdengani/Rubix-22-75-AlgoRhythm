@@ -117,8 +117,8 @@
     <!-- Bootstrap Static Header -->
     <div class="jumbotron bg-cover text-white">
         <div class="container py-5 text-center" style="height:26rem">
-            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem">Fresh Ingredients, Better Taste</h1>
-            <p class="font-italic mb-0" style="font-size: 1.5rem">Welcome, Name To Foodie</p>
+            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem; text-shadow: 5px 5px 10px black;">Fresh Ingredients, Better Taste</h1>
+            <p class="font-italic mb-0" style="font-size: 1.5rem; text-shadow: 5px 5px 10px black;">Welcome, Name To Foodie</p>
         </div>
     </div>
 
@@ -176,7 +176,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item" style="background-image: url({{ asset('images/ui/5.png') }})">
                             <div class="categories__text">
-                                <h4>My Nutrition Value</h4>
+                                <h4>Nutrition Value</h4>
                                 <p>Tracking your food intake will give you insight into many aspects of your eating habits.</p>
                                 <a href="#">Track Now</a>
                             </div>
@@ -376,44 +376,44 @@
                         <div class="carousel-item active" data-bs-interval="10000">
                             <div class="row h-100 align-items-center">
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italianFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Italian</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/chineseFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Chinese</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/indianFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Indian</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/mexicanFood.jpg') }}" />
                                 <div class="card-body ps-0">
                                     <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Mexican</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/frenchFood.jpg') }}" />
                                 <div class="card-body ps-0">
-                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Mughalia</h5>
+                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">French</h5>
                                 </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/italian.jpg') }}" />
+                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/americanFood.jpg') }}" />
                                 <div class="card-body ps-0">
-                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Burmese</h5>
+                                    <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">American</h5>
                                 </div>
                                 </div>
                             </div>
@@ -433,9 +433,9 @@
     <!-- Bootstrap Static Header -->
     <div class="jumbotron bg-covering text-white mt-3">
         <div class="container py-5 text-center" style="height:22rem">
-            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;color: white; font-size: 2rem">Want To Know More About Us?</h1>
+            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;color: white; font-size: 2rem; text-shadow: 5px 5px 10px black;">Want To Know More About Us?</h1>
             <div class="container">
-            <a class="btn btn-lg btn-primary mt-6" href="#" style="width: 10rem; align-items:center">Contact Us</a>
+            <a class="btn btn-lg btn-success shadow mt-6" href="#" style="width: 10rem; align-items:center">Contact Us</a>
             </div>
         </div>
     </div>
