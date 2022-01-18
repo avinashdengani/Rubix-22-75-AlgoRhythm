@@ -10,4 +10,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+Route::get('/nutritions', function () {
+    return view('nutritions.index');
+});
+
 Route::resource('recipes', RecipesController::class);
