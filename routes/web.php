@@ -8,11 +8,11 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 
 Route::get('/nutritions', function () {
     return view('nutritions.index');
-});
+})->name('nutritions.index');
 
 Route::resource('recipes', RecipesController::class);

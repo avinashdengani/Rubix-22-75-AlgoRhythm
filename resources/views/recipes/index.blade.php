@@ -98,9 +98,8 @@
 
 {{-- PRODUCT CARDS --}}
 <div class="container py-5">
-    <div class="row pb-0 mb-0 recipe-search-result">
-
-    </div>
+    <div class="search-results-count"></div>
+    <div class="row pb-0 mb-0 recipe-search-result"></div>
     <div class="text-center">
         <button class="recipe-load-more btn btn-success mt-5">Load More</button>
     </div>
@@ -123,7 +122,7 @@
             </p>
 
             <br>
-            <a href="#" class="mt-auto btn bg-yellow " style="font-weight: bolder">Add Recipe</a>
+            <a href="#" class="mt-auto btn btn-success " style="font-weight: bolder">Add Recipe</a>
           </div>
         </div>
         <!-- Carousel start -->
@@ -138,7 +137,7 @@
 </div>
 {{-- PRODUCT CARDS THRICE FOR MY RECIPES --}}
 <div class="container" style="padding-top: 0%;">
-    <div class="text-center">
+    <div class="text-center section">
         <h1 class="mb-4">Your Recipe Book</h1>
         <a href="#" style="font-size: 15px;color:black;font-weight:bold">Want To Add A Recipe?</a>
     </div>
@@ -216,8 +215,16 @@
     </div>
 </div>
 
+@endsection
 
+@section('scripts')
 
+    <script src="{{ asset('js/recipes/recipe.js') }}"></script>
+
+    <script>
+        $(".recipe-load-more").hide();
+        searchRecipes();
+    </script>
 @endsection
 
 

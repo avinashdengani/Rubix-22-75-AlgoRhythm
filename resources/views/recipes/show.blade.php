@@ -36,8 +36,11 @@
   </div>
   <!-- /.container -->
 
-
-
-
 @endsection
 
+@section('scripts')
+    <script src="{{ asset('js/recipes/recipe.js') }}"></script>
+    <script>
+        getRecipe('{{$recipe}}');
+    </script>
+@endsection

@@ -152,4 +152,9 @@
 
 @endsection
 
-
+@section('scripts')
+    <script src="{{asset('js/nutritions/nutrition.js')}}"></script>
+    <script>
+        searchNutritions();
+    </script>
+@endsection
