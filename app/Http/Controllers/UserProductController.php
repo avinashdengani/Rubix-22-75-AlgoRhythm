@@ -120,6 +120,14 @@ class UserProductController extends Controller
         $storeroomProduct->delete();
 
     }
+
+    public function deleteProduct(Storeroom $storeroom)
+    {
+        $storeroomProduct = Storeroom::findOrFail($storeroom->id);
+        $storeroomProduct->delete();
+    }
+
+    
     public function markAsPurchased(Request $request, User $user, Product $product)
     {
         $rules = [
@@ -196,3 +204,13 @@ class UserProductController extends Controller
         return redirect()->back();
     }
 }
+
+
+
+
+
+
+
+
+
+

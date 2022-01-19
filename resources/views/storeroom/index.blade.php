@@ -229,6 +229,14 @@ h1 {
             <p class="m-3">Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
         </div>
     </form>
+    {{-- Dropdown --}}
+    <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+        <label for="recipe_id" style="font-weight: bolder">Search Recipes For Available Products</label>
+        <select name="recipe_id" id="recipe_id" class="form-control select2 recipe_id" multiple>
+            <option></option>
+        </select>
+            <small id="emailHelp" class="form-text text-danger product_id_error"></small>
+    </div>
 </div>
 @endsection
 
@@ -244,15 +252,21 @@ h1 {
     <script src="{{asset('js/products/add_product.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/storeroom/add_product_in_storeroom.js')}}"></script>
+    <script src="{{asset('js/storeroom/delete_product_in_storeroom.js')}}"></script>
     <script>
 
 
     const addproductsInStoreroom = function (data){
 
+    let productsForRecipe = $('#recipe_id');
+    productsForRecipe.html("");
+
     itemsList = $("#purchased-products-list");
     for(let i in data){
         let j=i;
         let markAsConsummedRoute = `{{ url('users/' . auth()->user()->id . '/products') }}` + "/" + data[i]['product']['id'] + "/mark-as-consumed";
+
+        let deleteProductRoute = `{{ url('storeroom')}}` + "/" + data[i]['id'] + "/delete";
 
         itemsList.append(`
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-5">
@@ -268,6 +282,10 @@ h1 {
                                 <button class="btn btn-primary" type="submit" onclick="ajaxMethodForConsumed('${markAsConsummedRoute}', '${csrf_token}', ${data[i]['product']['id']}, ${user_id}, '${reloadRoute}' )">
                                     <i class="fas fa-drumstick-bite"></i>
                                 </button>
+                                <button class="btn btn-outline-danger" type="submit" onclick="ajaxMethodForDeleteProduct('${deleteProductRoute}', '${csrf_token}', '${user_id}', '${reloadRoute}' )">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
                            </div>
                     <div class="card-body">
                         <div class="">
@@ -278,7 +296,13 @@ h1 {
                 </div>
             </div>
                 `);
+
+                productsForRecipe.append(`
+                    <option value="${data[i]['product']['id']}">${data[i]['product']['name']}</option>
+                `);
             }
+
+            
         }
 
         function getDateDifference(date){

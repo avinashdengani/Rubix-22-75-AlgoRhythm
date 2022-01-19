@@ -42,6 +42,7 @@ Route::put('users/{user}/products/{product}/mark-as-purchased', [UserProductCont
 Route::put('users/{user}/products/{product}/mark-as-consumed', [UserProductController::class, 'markAsConsumed'])->name('users.products.mark-as-consumed');
 Route::post('users/{user}/purchase', [UserProductController::class, 'purchase'])->name('users.products.purchase');
 Route::post('purchasedProducts/ajax', [UserProductController::class, 'getPurchasedProductsJson'])->name('user.purchasedProducts');
+Route::delete('storeroom/{storeroom}/delete', [UserProductController::class, 'deleteProduct'])->name('user.deleteProduct');
 
 Route::resource('products', ProductsController::class);
 Route::post('products/ajax', [ProductsController::class, 'getProductsForCategory'])->name('products.getDataForCategory');

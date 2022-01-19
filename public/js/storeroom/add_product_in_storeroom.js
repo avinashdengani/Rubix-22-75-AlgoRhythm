@@ -90,6 +90,7 @@ const ajaxMethodForConsumed = function (route, csrf_token, product_id, user_id, 
             success: function (data){
                 $("#purchased-products-list").html('');
                 ajaxMethodForStoreroomProducts(reloadRoute, csrf_token, user_id);
+                popUpMessage('bg-success', "Product Removed As It Is Consumed!");
             },
             error: function (e){
                 popUpMessage('bg-danger', " Some error occured! Please try again later.");
