@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
                     'category_id' => $categoryObject->id,
                     'name' => $product,
                     'calories' => rand(10, 500),
-                    'image' => 'images/products/'. $categoryObject->name . '/' . str_replace(' ', '', strtolower($product)) . ".jpg"
+                    'image' => 'images/products/'. strtolower($categoryObject->name) . '/' . str_replace(' ', '', strtolower($product)) . ".jpg"
                 ]);
             }
         }

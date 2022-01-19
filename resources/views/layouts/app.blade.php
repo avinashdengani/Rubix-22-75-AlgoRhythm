@@ -79,8 +79,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('grocery.index') }}">{{ __('Grocery List') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('recipes.index') }}">{{ __('Recipes') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-black h5 font-weight-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Recipes
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('recipes.index') }}">{{ __('Search Recipes') }}</a>
+                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('recipes.create') }}">{{ __('Add your own recipe') }}</a>
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-black h5 font-weight-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
