@@ -28,6 +28,31 @@ const searchRecipes = function() {
     });
 }
 
+const searchRecipesOfStoreroomProducts = function() {
+    $("#search-recipes-btn-in-storeroom").on('click', function() {
+        let recipeSearchResultParent = $(".recipe-search-result");
+        recipeSearchResultParent.html('');
+
+
+        let searchData = $("#recipe_id").val();
+        let finalSearchData='';
+        for(let i=0; i<searchData.length; i++) {
+            finalSearchData += searchData[i] + '&';
+        }
+        ajaxMethodForRecipeSearch(allRecipesAPiUrl, finalSearchData, URL_TYPE_ALL_RECIPES);
+    });
+
+    $(".recipe-load-more").on('click', function() {
+        searchData = "";
+        ajaxMethodForRecipeSearch(nextAPiUrl, searchData, URL_TYPE_ALL_RECIPES);
+        $(this).html(`
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        `);
+        $(this).attr('disabled', true);
+    });
+}
 const getRecipe = function(recipe) {
     const recipeApilUrl = "https://api.edamam.com/api/recipes/v2/" + recipe + "?type=public";
     let searchData="";

@@ -230,13 +230,22 @@ h1 {
         </div>
     </form>
     {{-- Dropdown --}}
-    <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
-        <label for="recipe_id" style="font-weight: bolder">Search Recipes For Available Products</label>
-        <select name="recipe_id" id="recipe_id" class="form-control select2 recipe_id" multiple>
-            <option></option>
-        </select>
-            <small id="emailHelp" class="form-text text-danger product_id_error"></small>
-    </div>
+        <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+            <label for="recipe_id" style="font-weight: bolder">Search Recipes For Available Products</label>
+            <select name="recipe_id[]" id="recipe_id" class="form-control select2 recipe_id" multiple>
+                <option></option>
+            </select>
+                <small id="emailHelp" class="form-text text-danger product_id_error"></small>
+        </div>
+        <button class="btn btn-success" id="search-recipes-btn-in-storeroom" >Search Recipes</button>
+
+        <div class="container py-5">
+            <div class="search-results-count"></div>
+            <div class="row pb-0 mb-0 recipe-search-result"></div>
+            <div class="text-center">
+                <button class="recipe-load-more btn btn-success mt-5">Load More</button>
+            </div>
+        </div>
 </div>
 @endsection
 
@@ -298,11 +307,10 @@ h1 {
                 `);
 
                 productsForRecipe.append(`
-                    <option value="${data[i]['product']['id']}">${data[i]['product']['name']}</option>
+                    <option value="${data[i]['product']['name']}">${data[i]['product']['name']}</option>
                 `);
             }
 
-            
         }
 
         function getDateDifference(date){
@@ -475,7 +483,7 @@ h1 {
                 });
         }
     </script>
-
+    <script src="{{asset('js/recipes/recipe.js')}}"></script>
 
     <script>
         $("#add-product-form").validate({
@@ -529,5 +537,6 @@ h1 {
         mediaWatcher.addListener(mediaWatcherFunction);
 
         new MySmoothScroll("#add-items-btn");
+        searchRecipesOfStoreroomProducts();
     </script>
 @endsection
