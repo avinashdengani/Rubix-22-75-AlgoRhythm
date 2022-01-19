@@ -21,60 +21,67 @@
 @endsection
 
 @section('content')
-<form id="add-product-in-grocery-form" action="#" method="POST" style="overflow: hidden">
-    <!-- Bootstrap Static Header -->
-    <div class="jumbotron bg-cover text-white">
-        <div class="container py-5 text-center" style="height:26rem">
-            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;  text-shadow: 5px 5px 10px black;">Keep Your Grocery List Ready</h1>
-            <p class="font-italic mb-0" style="font-size: 1.5rem;  text-shadow: 5px 5px 10px black;">Making Grocery Shopping Easier</p>
+<!-- Bootstrap Static Header -->
+<div class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center" style="height:26rem">
+        <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;  text-shadow: 5px 5px 10px black;">Keep Your Grocery List Ready</h1>
+        <p class="font-italic mb-0" style="font-size: 1.5rem;  text-shadow: 5px 5px 10px black;">Making Grocery Shopping Easier</p>
+    </div>
+</div>
+<div class="container">
+    <form id="add-product-in-grocery-form" action="#" method="POST" style="overflow: hidden" class="col-md-12">
+
+
+        <div class="m-5">
+            <div class="d-flex flex-row justify-content-between">
+                {{-- Dropdown --}}
+                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                    <label for="category_id" style="font-weight: bolder">Select Category</label>
+                    <select name="category_id" id="category_id" class="form-control select2 category_id">
+                        <option></option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : ''}}>{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                        <small id="emailHelp" class="form-text text-danger category_id_error"></small>
+                </div>
+                {{-- Dropdown --}}
+                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                    <label for="product_id" style="font-weight: bolder">Add Items to Grocery List</label>
+                    <select name="product_id" id="product_id" class="form-control select2 product_id">
+                        <option></option>
+                    </select>
+                        <small id="emailHelp" class="form-text text-danger product_id_error"></small>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                    <label for="quantity" style="font-weight: bolder">Quantity</label>
+                    <input type="number" class="form-control quantity" name="quantity">
+                    <small id="emailHelp" class="form-text text-danger quantity_error"></small>
+                </div>
+
+                    {{-- Dropdown --}}
+                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                    <label for="unit_id" style="font-weight: bolder">Unit</label>
+                    <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
+                    <option></option>
+                    @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}" {{ old('unit_id') ? 'selected' : ''}}>{{ $unit->name }}</option>
+                    @endforeach
+                    </select>
+                        <small id="emailHelp" class="form-text text-danger unit_id_error"></small>
+                </div>
+            </div>
+
+            <div class="form-group m-2 p-2 d-flex flex-row justify-content-between col-md-6"  style=" background-color:white" >
+                <button class="btn btn-success btn-sm" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">Submit</button>
+
+                <p>Didn't found product in list?<button class="btn btn-link m-0 p-0" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
+            </div>
         </div>
-    </div>
-
-        {{-- Dropdown --}}
-    <div class="form-group p-5" style=" background-color:white" >
-        <label for="category_id" style="font-weight: bolder">Select Category</label>
-        <select name="category_id" id="category_id" class="form-control select2 category_id">
-            <option></option>
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : ''}}>{{ $category->name }}</option>
-            @endforeach
-        </select>
-            <small id="emailHelp" class="form-text text-danger category_id_error"></small>
-    </div>
-    {{-- Dropdown --}}
-    <div class="form-group p-5" style=" background-color:white" >
-        <label for="product_id" style="font-weight: bolder">Add Items to Grocery List</label>
-        <select name="product_id" id="product_id" class="form-control select2 product_id">
-            <option></option>
-        </select>
-            <small id="emailHelp" class="form-text text-danger product_id_error"></small>
-        <button class="btn btn-success rounded-circle" type="button" class="add-product-btn" onclick="swalFireForAddProduct()"><i class="fas fa-info-circle"></i></button>
-    </div>
-
-    <div class="row">
-        <div class="form-group p-5 col-md-2" style=" background-color:white" >
-            <label for="quantity" style="font-weight: bolder">Quantity</label>
-            <input type="number" class="form-control quantity" name="quantity">
-            <small id="emailHelp" class="form-text text-danger quantity_error"></small>
-        </div>
-        {{-- Dropdown --}}
-        <div class="form-group p-5 col-md-2" style=" background-color:white" >
-            <label for="unit_id" style="font-weight: bolder">Unit</label>
-            <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
-            <option></option>
-            @foreach ($units as $unit)
-                <option value="{{ $unit->id }}" {{ old('unit_id') ? 'selected' : ''}}>{{ $unit->name }}</option>
-            @endforeach
-            </select>
-                <small id="emailHelp" class="form-text text-danger unit_id_error"></small>
-        </div>
-    </div>
-
-    <div class="form-group p-5" style=" background-color:white" >
-        <button class="btn btn-success" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">Submit</button>
-    </div>
-
-</form>
+    </form>
+</div>
 
 {{-- ADD --}}
 <div class="container"  style="background-color:white;max-width: 100%">
