@@ -81,4 +81,15 @@ class RecipesController extends Controller
         //
     }
 
+    public function suggestRecipes(Request $request)
+    {
+        $rules = [
+            'recipe_id' => 'required|exists:products,id'
+        ];
+
+        $this->validate($request, $rules);
+
+
+    }
+
 }

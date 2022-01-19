@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\StoreroomController;
@@ -49,6 +50,6 @@ Route::post('products/ajax', [ProductsController::class, 'getProductsForCategory
 
 Route::post('userProducts/ajax', [UserProductController::class, 'getGroceryList'])->name('user.getGroceryList');
 
-
+Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 

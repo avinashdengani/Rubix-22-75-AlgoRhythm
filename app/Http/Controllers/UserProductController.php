@@ -71,7 +71,44 @@ class UserProductController extends Controller
         $categories = Category::all();
         $groceryList = $this->getProductsForUserInGroceryList();
         $units = Unit::all();
-        return view('grocery.index', compact(['categories', 'groceryList', 'units']));
+
+        $storeroomProducts = Storeroom::where('user_id', auth()->user()->id)
+                                ->isPurchased()
+                                ->with('product')
+                                ->get();
+
+        $productsInCategories = [];
+        $i = 0;
+        if(count($storeroomProducts) > 0){
+            foreach($storeroomProducts as $storeroomProduct){
+                foreach($storeroomProduct->product->category->products as $product) {
+                    if(! in_array($product, $productsInCategories)) {
+                        array_push($productsInCategories, $product);
+                        $i++;
+                    }
+                    if($i > 3) {
+                        break;
+                    }
+                }
+            }
+        }else{
+            $categories = Category::all()->random(10);
+            foreach($categories as $key => $category){
+                foreach($category->products as $product) {
+                    if(! in_array($product, $productsInCategories)) {
+                            array_push($productsInCategories, $product);
+                        $i++;
+                    }
+                    if($i > 3) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        array_unique($productsInCategories);
+
+        return view('grocery.index', compact(['categories', 'groceryList', 'units', 'productsInCategories']));
     }
 
     public function getGroceryList(Request $request): JsonResponse
@@ -127,7 +164,7 @@ class UserProductController extends Controller
         $storeroomProduct->delete();
     }
 
-    
+
     public function markAsPurchased(Request $request, User $user, Product $product)
     {
         $rules = [
@@ -205,26 +242,27 @@ class UserProductController extends Controller
     }
 
     public function recommendationProducts(User $user){
-        $storeroomProducts = Storeroom::where('user_id', $user->id)
-                                    ->isPurchased()
-                                    ->with('product')
-                                    ->get();
-        
+        $storeroomProducts =
+                        Storeroom::where('user_id', $user->id)
+                                ->isPurchased()
+                                ->with('product')
+                                ->get();
+
         $productsInCategories = [];
         if(count($storeroomProducts) > 0){
             foreach($storeroomProducts as $storeroomProduct){
                 array_push($productsInCategories, $storeroomProduct->product->category->products);
-            }   
+            }
         }else{
             $categories = Category::all()->random(5);
             foreach($categories as $category){
                 array_push($productsInCategories, $category->products);
             }
         }
-    
+
         return $productsInCategories;
     }
-}   
+}
 
 
 

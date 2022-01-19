@@ -129,14 +129,26 @@
 <div class="container py- mt-0 mb-0" style="background-color: white;max-width: 100%">
     <div class="container">
         <div class="text-center">
-            <h1 class="mb-5 mt-5">Items That You Consumed Recently</h1>
+            <h1 class="mb-5 mt-5">Suggested Items</h1>
         </div>
         <section class="py-8 overflow-hidden">
             <div class="container mt-0">
               <div class="row flex-center mb-0  ">
-                    <div class="col-lg-7">
-
+                    @foreach ($productsInCategories as $product)
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-5">
+                        <!-- Card-->
+                        <div class="shadow card border-0 rounded">
+                            <img class="img-fluid round-circle h-100"
+                                src="{{ asset($product->image_path) }}"
+                                style="width:300px !important; height:300px !important;" />
+                                <div class="card-header d-flex flex-row justify-content-between">
+                                    <div class="">
+                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">{{ $product->name }}</h5>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
+                    @endforeach
               </div>
 
             </div><!-- end of .container-->

@@ -71,7 +71,7 @@
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('login') }}">{{ __('Add Products') }}</a>
+                                <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('storeroom.index') }}">{{ __('Store Room') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('nutritions.index') }}">{{ __('Nutritions') }}</a>
@@ -115,6 +115,9 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger h5 font-weight-bolder " href="{{ route('notifications.index') }}"><i class="fas fa-bell text-black"></i>{{auth()->user()->unreadNotifications()->count()}}</a>
                             </li>
                         @else
                             @if (Route::has('login'))

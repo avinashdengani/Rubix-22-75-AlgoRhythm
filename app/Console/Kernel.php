@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Storeroom;
+use App\Notifications\ExpiryDate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('users:notify')->dailyAt('1:25');
     }
 
     /**
