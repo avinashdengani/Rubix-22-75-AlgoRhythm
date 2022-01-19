@@ -4,6 +4,21 @@
 
 @section('styles')
 <style>
+    .show-section{
+        margin: 100px;
+    }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+    .show-section{
+        margin: 40px;
+    }
+}
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+    .show-section{
+        margin: 60px;
+    }
+}
 
 
     </style>
@@ -14,7 +29,7 @@
 
 <!-- Page Content -->
 <div class="container">
-    <div class="section">
+    <div class="show-section">
 
     <!-- Portfolio Item Row -->
     <div class="row recipe-searched-results">
@@ -35,12 +50,12 @@
             </div>
 
             <div class="col-md-6">
-                <h5 class="small text-muted m-0">Cuisine: {{$recipe->cuisineType}}</h5>
-                <h5 class="small text-muted m-0">Dish Type: {{$recipe->dishType}}</h5>
-                <h5 class="small text-muted m-0">Meal Type: {{$recipe->mealType}}</h5>
-                <h5 class="small text-muted m-0">Posted {{$recipe->created_date}}</h5>
+                <h4 class="text-muted m-0">Cuisine: {{$recipe->cuisineType}}</h4>
+                <h4 class="text-muted m-0">Dish Type: {{$recipe->dishType}}</h4>
+                <h4 class="text-muted m-0">Meal Type: {{$recipe->mealType}}</h4>
+                <h4 class="text-muted m-0">Posted {{$recipe->created_date}}</h4>
                 <h3 class="my-3">Recipe:</h3>
-                <ul>
+                <ul class="h5">
                     {{$recipe->recipe}}
                 </ul>
             </div>
@@ -48,6 +63,7 @@
     <!-- /.row -->
 
     </div>
+    {{-- End show-section --}}
 
   </div>
   <!-- /.container -->
