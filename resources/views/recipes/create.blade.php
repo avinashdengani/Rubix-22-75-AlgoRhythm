@@ -215,7 +215,7 @@
 
                         <div class="form-group mt-4">
                             <label for="image">RECIPE IMAGE</label>
-                            <input type="file" 
+                            <input type="file"
                                     class="form-control @error('image') is-invalid @enderror"
                                     name="image"
                                     id="image">
