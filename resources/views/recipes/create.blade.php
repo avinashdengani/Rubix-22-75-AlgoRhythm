@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', 'Add Recipe | Foodie')
@@ -24,10 +23,24 @@
 
 
     .section-contact {
-        padding: 120px;
-
+        padding-top: 120px;
+        padding-bottom: 120px;
     }
 
+    @media only screen and (min-width: 600px) {
+        .section-contact {
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+        .section-contact {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+    }
 
 
     .section-contact .form-contact .single-input {
@@ -46,7 +59,7 @@
     .section-contact .form-contact .single-input textarea {
         width: 100%;
         border: none;
-        border-bottom: 2px solid #000000;
+        border-bottom: 2px solid #07395c;
         padding-left: 50px;
         padding-bottom: 15px;
         font-size: 15px;
@@ -106,6 +119,11 @@
     margin-top: auto;
 
     }
+    @media only screen and (max-width: 768px) {
+        .healthlabel{
+            max-width: 360px;
+        }
+    }
 
     .submit-btn {
     height: 38px;
@@ -134,7 +152,7 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-caption">
-                    <h1 class="page-title bg-light">Your Recipe Book</h1>
+                    <h1 class="page-title bg-light shadow-lg">Your Recipe Book</h1>
                 </div>
             </div>
         </div>
@@ -144,7 +162,7 @@
 <!-- news -->
 <div class="card-section">
     <div class="container">
-        <div class="card-block bg-darkgreen">
+        <div class="card-block bg-darkgreen rounded-3 shadow-lg">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <!-- section-title -->
@@ -167,54 +185,124 @@
 {{-- RECIPE ADD FORM --}}
 
 	<!-- START RECIPE SECTION -->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="section-contact">
 			<div class="row justify-content-center">
-				<div class="col-12">
+				<div class="col-md-12">
 					<div class="header-section text-center">
 						<div class="text-center">
                             <h1 class="mb-4">Create Your Own Recipes</h1>
                         </div>
-						<p class="description text-black mb-5" >The Create Your Own Recipe feature does exactly what it says - you can literally create any recipe you want to put together a fully customised meal. </p>
+						<p class="description text-black" >The Create Your Own Recipe feature does exactly what it says - you can literally create any recipe you want to put together a fully customised meal. </p>
 
 					</div>
 				</div>
 			</div>
 			<div class="form-contact">
-				<form class="" method="POST" action="{{ route('recipes.store') }}" enctype="multipart/form-data">
+                <form class="" id="create-recipe-form" method="POST" action="{{ route('recipes.store') }}" enctype="multipart/form-data">
                     @csrf
 					<div class="row">
+
+                        {{-- Recipe name --}}
                         <div class="col-md-6">
-                            <label for="Category">HEALTH LABELS</label>
-                            <select name="healthlabel_id[]" id="healthlabel_id" class="form-control select2" multiple>
-                                <option></option>
-                                    @foreach ($healthlabels as $label)
-                                        @if($label->id == old('healthlabel_id'))
-                                            <option value="{{$label->id}}" selected>{{$label->name}}</option>
-                                        @else
-                                            <option value="{{$label->id}}">{{$label->name}}</option>
-                                        @endif
-                                    @endforeach
-                            </select>
-                            @error('healthlabel_id')
+                            <div class="single-input">
+                                <i class="fas fa-cauldron"></i>
+                                <input type="text" name="name" placeholder="RECIPE NAME" value="{{ old('name') }}">
+                            </div>
+                            @error('name')
                                 <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
+                        {{-- Calories --}}
                         <div class="col-md-6">
-                            <label for="published_at">PUBISHED AT</label>
-                            <input type="text" style="background-color: white;"
+                            <div class="single-input">
+                                <i class="fas fa-cauldron"></i>
+                                <input
+                                type="text"
+                                name="calories"
+                                placeholder="RECIPE CALORIES"
+                                value="{{ old('calories') }}">
+                                @error('calories')
+                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- Cuisine Type --}}
+                        <div class="col-md-6">
+                            <div class="single-input">
+                                <i class="fas fa-seedling"></i>
+                                <input type="text" name="cuisineType" placeholder="CUISINE TYPE e.g (Indian/Chinese)" value="{{ old('cuisineType') }}">
+                            </div>
+                            @error('cuisineType')
+                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        {{-- Meal Type --}}
+                        <div class="col-md-6">
+                            <div class="single-input">
+                                <i class="fas fa-stroopwafel"></i>
+                                <input type="text" name="mealType" placeholder="MEAL TYPE e.g (Lunch/Dinner)" value="{{ old('mealType') }}">
+                            </div>
+                            @error('mealType')
+                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        {{-- Dish Type --}}
+                        <div class="col-md-6 mt-3">
+                            <div class="single-input">
+                                <i class="fas fa-candy-cane"></i>
+                                <input type="text" name="dishType" placeholder="DISH TYPE e.g (Main Course/ Snacks)" value="{{ old('dishType') }}">
+                            </div>
+                            @error('dishType')
+                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        {{-- Published at --}}
+                        <div class="col-md-6 mt-4">
+                            <label for="published_at">Published At</label>
+                            <div class="d-flex flex-row">
+                                <input type="text"
                                 class="form-control"
                                 name="published_at"
                                 value="{{ old('published_at') }}"
                                 id="published_at">
+                                <button class="btn btn-success rounded-circle ms-2" type="button" class="add-product-btn" onclick="swalFireForAddProduct()"><i class="fas fa-info-circle"></i></button>
+                            </div>
                             @error('published_at')
-                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
-                        <div class="form-group mt-4">
-                            <label for="image">RECIPE IMAGE</label>
+                        {{-- Health Labels --}}
+                        <div class="col-md-6 mt-3">
+                            <label for="Category">Health Labels</label>
+                            <select name="healthlabel_id[]" id="healthlabel_id" class="form-control select2 healthlabel" multiple>
+                                <option></option>
+                                @foreach ($healthlabels as $label)
+                                @if($label->id == old('healthlabel_id'))
+                                <option value="{{$label->id}}" selected>{{$label->name}}</option>
+                                @else
+                                <option value="{{$label->id}}">{{$label->name}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                            @error('healthlabel_id')
+                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+
+
+
+
+                        {{-- Image Input --}}
+                        <div class="col-md-6 form-group mt-3">
+                            <label for="image">Image</label>
                             <input type="file"
                                     class="form-control @error('image') is-invalid @enderror"
                                     name="image"
@@ -224,60 +312,10 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-6">
-							<div class="single-input">
-								<i class="fas fa-cauldron"></i>
-								<input
-                                    type="text"
-                                    name="calories"
-                                    placeholder="RECIPE CALORIES"
-                                     value="{{ old('calories') }}">
-                                @error('calories')
-                                    <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                                @enderror
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="single-input">
-								<i class="fas fa-cauldron"></i>
-								<input type="text" name="name" placeholder="RECIPE NAME" value="{{ old('name') }}">
-							</div>
-                            @error('name')
-                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-						</div>
-						<div class="col-md-6">
-							<div class="single-input">
-								<i class="fas fa-seedling"></i>
-								<input type="text" name="cuisineType" placeholder="CUISINE TYPE e.g (Indian/Chinese)" value="{{ old('cuisineType') }}">
-							</div>
-                            @error('cuisineType')
-                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-						</div>
-						<div class="col-md-6">
-							<div class="single-input">
-								<i class="fas fa-stroopwafel"></i>
-								<input type="text" name="mealType" placeholder="MEAL TYPE e.g (Lunch/Dinner)" value="{{ old('mealType') }}">
-							</div>
-                            @error('mealType')
-                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-						</div>
-						<div class="col-md-6">
-							<div class="single-input">
-								<i class="fas fa-candy-cane"></i>
-								<input type="text" name="dishType" placeholder="DISH TYPE e.g (Main Course/ Snacks)" value="{{ old('dishType') }}">
-							</div>
-                            @error('dishType')
-                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-						</div>
-						<div class="col-12">
+                        <div class="col-12">
 							<div class="single-input">
 								<i class="fas fa-hamburger"></i>
-								<textarea placeholder="RECIPE" name="recipe" >{{ old('recipe') }}</textarea>
+								<textarea placeholder="RECIPE" class="border border-dark" name="recipe" >{{ old('recipe') }}</textarea>
 							</div>
                             @error('recipe')
                                 <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
@@ -392,7 +430,56 @@
     flatpickr("#published_at", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
-        minDate:"today"
+        minDate: "today"
     });
+
+
+    function swalFireForAddProduct()
+        {
+            Swal.fire({
+                    icon: "info",
+                    html: `<h5>On selecting a date & time, the recipe will be published in the recipe blog at the mentioned Date & Time.</h5> <br>
+                        <h5>Keeping this option empty will not publish it in the blog and will keep it private.</h5>`,
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: {
+                        confirmButton: "btn font-weight-bold btn-light",
+
+                    }
+                });
+        }
+
+        $("#create-recipe-form").validate({
+            rules:
+                {
+                    name: {
+                        required: true,
+                    },
+                    calories: {
+                        required: true,
+                    },
+                    cuisineType: {
+                        required: true,
+                    },
+                    mealType:{
+                        required: true,
+                    },
+                    dishType:{
+                        required: true,
+                    },
+                    recipe:{
+                        required: true,
+                    }
+
+                },
+
+            errorElement: 'p',
+            errorPlacement: function(error, element) {
+                if (error) {
+                    error.insertAfter(element);
+                    error.addClass('text-danger');
+                }
+            }
+        });
 </script>
 @endsection
