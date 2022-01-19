@@ -10,10 +10,10 @@ var submitAddProductForm = function(route, user_id, routeForStoreroomProducts, c
     $(".unit_id_error").html('');
     $(".expiry_date_error").html('');
     let formData = {
-        product_id: product_id_val, 
-        quantity: quantity_val, 
+        product_id: product_id_val,
+        quantity: quantity_val,
         unit_id: unit_id_val,
-        expiry_date: expiry_date_val, 
+        expiry_date: expiry_date_val,
          _token: csrf_token
     };
     ajaxMethodForStoreroom(route, formData, csrf_token, user_id, routeForStoreroomProducts);
@@ -36,7 +36,7 @@ const ajaxMethodForStoreroom = function (route, formData, csrf_token, user_id, r
                 $(".quantity_error").html('');
                 $(".unit_id_error").html('');
                 $(".expiry_date_error").html('');
-                
+
                 popUpMessage('bg-success', "Product added successfully in your list!");
                 ajaxMethodForStoreroomProducts(routeForStoreroomProducts, csrf_token, user_id);
             },
@@ -75,3 +75,25 @@ const ajaxMethodForStoreroomProducts = function (route, csrf_token, user_id){
     );
 }
 
+
+const ajaxMethodForConsumed = function (route, csrf_token, product_id, user_id, reloadRoute){
+    $.ajax(
+        {
+            type: 'POST',
+            url: route,
+            data: {
+                user_id : user_id,
+                product_id: product_id,
+                _token: csrf_token,
+                _method: 'PUT'
+            },
+            success: function (data){
+                $("#purchased-products-list").html('');
+                ajaxMethodForStoreroomProducts(reloadRoute, csrf_token, user_id);
+            },
+            error: function (e){
+                popUpMessage('bg-danger', " Some error occured! Please try again later.");
+            }
+        }
+    );
+}

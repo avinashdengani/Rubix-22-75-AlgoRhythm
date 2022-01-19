@@ -245,14 +245,14 @@ h1 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/storeroom/add_product_in_storeroom.js')}}"></script>
     <script>
-    
-    
-    const addproductsInStoreroom = function (data){
-            
-    itemsList = $("#purchased-products-list");
 
+
+    const addproductsInStoreroom = function (data){
+
+    itemsList = $("#purchased-products-list");
     for(let i in data){
         let j=i;
+        let markAsConsummedRoute = `{{ url('users/' . auth()->user()->id . '/products') }}` + "/" + data[i]['product']['id'] + "/mark-as-consumed";
 
         itemsList.append(`
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-5">
@@ -261,9 +261,14 @@ h1 {
                     <img class="img-fluid round-circle h-100"
                         src="{{ url('storage')}}`+ '/' + data[i]['product']['image'] + `"
                         style="width:300px !important; height:300px !important;" />
-                    <div class="card-header">
-                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">${data[i]['product']['name']}</h5>
-                    </div>
+                        <div class="card-header d-flex flex-row justify-content-between">
+                            <div class="">
+                                <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">${data[i]['product']['name']}</h5>
+                            </div>
+                                <button class="btn btn-primary" type="submit" onclick="ajaxMethodForConsumed('${markAsConsummedRoute}', '${csrf_token}', ${data[i]['product']['id']}, ${user_id}, '${reloadRoute}' )">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                </button>
+                           </div>
                     <div class="card-body">
                         <div class="">
                             <p class="">Unit: ${data[i]['quantity']} ${data[i]['unit']['name']}</p>
@@ -276,7 +281,6 @@ h1 {
             }
         }
 
-
         function getDateDifference(date){
             var date1 = new Date();
             var date2 = new Date(date);
@@ -287,10 +291,10 @@ h1 {
             // To calculate the no. of days between two dates
             return Difference_In_Time / (1000 * 3600 * 24);
         }
-        let route = `{{ route('user.purchasedProducts') }}`;
+        let reloadRoute = `{{ route('user.purchasedProducts') }}`;
         let user_id = `{{ auth()->user()->id }}`;
         let csrf_token = '{{ csrf_token() }}';
-        ajaxMethodForStoreroomProducts(route, csrf_token, user_id);
+        ajaxMethodForStoreroomProducts(reloadRoute, csrf_token, user_id);
     </script>
 
     <script src="{{asset('js/products/delete_product.js')}}"></script>
@@ -499,5 +503,7 @@ h1 {
         var mediaWatcher = window.matchMedia("(max-width: 800px)");
         mediaWatcherFunction(mediaWatcher);
         mediaWatcher.addListener(mediaWatcherFunction);
+
+        new MySmoothScroll("#add-items-btn");
     </script>
 @endsection

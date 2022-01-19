@@ -19,6 +19,9 @@ class Storeroom extends Model
     const FAVOURITE = 1;
     const NOT_FAVOURITE = 0;
 
+    const CONSUMED = 1;
+    const NOT_CONSUMED = 0;
+
 
     // SCOPES
     public function scopeIsNotPurchased($query)
@@ -29,6 +32,15 @@ class Storeroom extends Model
     {
         return $query->where('isPurchased', self::PURCHASED);
     }
+    public function scopeIsNotConsumed($query)
+    {
+        return $query->where('isConsumed', self::NOT_CONSUMED);
+    }
+    public function scopeIsConsumed($query)
+    {
+        return $query->where('isConsumed', self::CONSUMED);
+    }
+
     public function getExpiryAttribute()
     {
         $expiry = new Carbon($this->expiry_date);
@@ -53,16 +65,7 @@ class Storeroom extends Model
         return $query->where('isFavourite', self::FAVOURITE);
     }
 
-    protected $fillable = [
-        'user_id',
-        'product_id',
-        'quantity',
-        'unit_id',
-        'isPurchased',
-        'isConsumed',
-        'isFavourite',
-        'expiry_date'
-    ];
+    protected $guarded = ['id'];
 
     public function owner(){
         return $this->hasOne(User::class, 'id', 'user_id');

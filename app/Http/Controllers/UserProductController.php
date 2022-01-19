@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Unit;
 use App\Models\Storeroom;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -89,16 +90,22 @@ class UserProductController extends Controller
 
     public function getPurchasedProductsJson(): JsonResponse
     {
-        $products = $products = Storeroom::where('user_id', auth()->user()->id)
-                                        ->isPurchased()
-                                        ->where('isConsumed', 0)
-                                        ->latest('updated_at')
-                                        ->with('product', 'unit')
-                                        ->get();
+        $products = Storeroom::where('user_id', auth()->user()->id)
+                                    ->isPurchased()
+                                    ->isNotConsumed()
+                                    ->with('product', 'unit')
+                                    ->oldest('expiry_date')->get();
+
+                                    // $products = Storeroom::where('user_id', auth()->user()->id)
+                                    //     ->isPurchased()
+                                    //     ->where('isConsumed', 0)
+                                    //     ->latest('updated_at')
+                                    //     ->with('product', 'unit')
+                                    //     ->get();
 
         $data = [];
         $data['products'] = $products;
-        return JsonResponse::fromJsonString(json_encode($data));                                        
+        return JsonResponse::fromJsonString(json_encode($data));
     }
 
     public function destroy(User $user, Product $product)
@@ -169,5 +176,23 @@ class UserProductController extends Controller
                 'isPurchased' => 1
             ]);
         }
+    }
+    public function markAsConsumed(Request $request, User $user, Product $product)
+    {
+
+        $storedProduct =
+                 Storeroom::where('user_id', auth()->user()->id)
+                        ->where('product_id', $product->id)
+                        ->isPurchased()
+                        ->isNotConsumed()
+                        ->first();
+
+        $storedProduct->update([
+            'isConsumed' => Storeroom::CONSUMED,
+            'consumed_date' => now()
+        ]);
+
+        session()->flash('success', 'Product Marked as Consumed!');
+        return redirect()->back();
     }
 }
