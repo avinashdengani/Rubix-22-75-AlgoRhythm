@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Healthlabel;
+use App\Models\Product;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -43,11 +45,66 @@ class DatabaseSeeder extends Seeder
             "Spices",
             "Others"
         ];
+        $products = [
+            // Fruits
+            ["Mango", "Apple", "Banana", "Blueberries", "Casaba melon", "Dates", "Figs", "Grapes", "Guava",
+            "Kiwi", "Orange", "Papaya", "Peach", "Pear", "Pineapple", "Plum",
+            "Strawberries", "Watermelon"],
 
+            // Vegetables
+            ["Tomato", "Potato", "Broccoli", "Spinach", "Basil", "Lettuce", "Carrots","Lemon", "Pumpkin",
+                "Red Bell Peppers", "Baby Corn", "Avocado", "Cabbage", "Cauliflower",
+                "Celery", "Cucumbers", "Mushrooms", "Okra", "Onions", "Zucchini"],
+            // Dairy
+            ["Milk", "Yogurt", "Cheese", "Buttermilk", "Cottage cheese", "eggs","Ghee",
+                "Whipped cream"],
+            // Oils
+            ["Canola oil", "Corn oil", "Sesame oil", "Soybean oil", "Olive oil",
+                "Peanut oil", "Walnut oil", "Sunflower oil"],
+            //Breads
+            ["Bagel", "Brown bread", "Loaf", "Bun",
+            "Tea Cake", "White bread", "Whole Wheat Bread"],
+            //Meat
+            ["Beef", "Chicken", "Mutton", "Pork"],
+            //Seafood
+            ["Fish", "Lobster", "Prawns", "Oyster", "Shark Meat"],
+            //Dry Fruits
+            ["Almond", "Apricot", "Cashewnuts", "Foxnuts",
+                "Walnuts", "Peanuts", "Pistachios", "Raisins", "Saffron", "Chironji", "Watermelon Seeds"],
+            //Pulses
+            ["Besan", "Chana dal", "Kala chana", "Kabuli channa", "Masoor dal",
+                "Rajma", "Soybean"],
+            //Spices
+            ["Basil seeds", "Black cardamom", "Black cumin seeds", "Black pepper", "Black salt",
+                "Cinnamon", "Cloves", "Coriander powder", "Curry leaves", "Dry ginger",
+                "Dry mango powder", "Garlic", "Jaggery", "Cocum,", "Mint", "Salt", "Rock Salt", "Tamarind",
+                "Turmeric"],
+            //Cereals and Others
+            ["Oats", "Chickpeas", "Cocoa", "Coffee Bean", "Durian", "Tea", "Coffee"]
+
+
+        ];
         foreach($categories as $key => $category){
             $categoryObject = Category::create([
                 'name' => $category
             ]);
+
+            foreach($products[$key] as $i => $product){
+                Product::create([
+                    'category_id' => $categoryObject->id,
+                    'name' => $product,
+                    'calories' => rand(10, 500),
+                    'image' => 'images/products/'. $categoryObject->name . '/' . str_replace(' ', '', strtolower($product)) . ".jpg"
+                ]);
+            }
         }
+
+        Unit::create([
+            'name' => 'kg'
+        ]);
+
+        Unit::create([
+            'name' => 'litres'
+        ]);
     }
 }
