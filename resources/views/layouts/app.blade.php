@@ -88,8 +88,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="#">About Us</a>
-                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="#">Contact Us</a>
+                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('about') }}">{{ __('About') }}</a>
+                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('contact') }}">{{ __('Contact') }}</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

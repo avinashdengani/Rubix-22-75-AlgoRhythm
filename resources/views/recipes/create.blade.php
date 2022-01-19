@@ -46,7 +46,7 @@
     .section-contact .form-contact .single-input textarea {
         width: 100%;
         border: none;
-        border-bottom: 2px solid #07395c;
+        border-bottom: 2px solid #000000;
         padding-left: 50px;
         padding-bottom: 15px;
         font-size: 15px;
@@ -175,7 +175,7 @@
 						<div class="text-center">
                             <h1 class="mb-4">Create Your Own Recipes</h1>
                         </div>
-						<p class="description text-black" >The Create Your Own Recipe feature does exactly what it says - you can literally create any recipe you want to put together a fully customised meal. </p>
+						<p class="description text-black mb-5" >The Create Your Own Recipe feature does exactly what it says - you can literally create any recipe you want to put together a fully customised meal. </p>
 
 					</div>
 				</div>
@@ -185,7 +185,7 @@
                     @csrf
 					<div class="row">
                         <div class="col-md-6">
-                            <label for="Category">Health Labels</label>
+                            <label for="Category">HEALTH LABELS</label>
                             <select name="healthlabel_id[]" id="healthlabel_id" class="form-control select2" multiple>
                                 <option></option>
                                     @foreach ($healthlabels as $label)
@@ -202,8 +202,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="published_at">Published At</label>
-                            <input type="text"
+                            <label for="published_at">PUBISHED AT</label>
+                            <input type="text" style="background-color: white;"
                                 class="form-control"
                                 name="published_at"
                                 value="{{ old('published_at') }}"
@@ -213,9 +213,9 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="image">Image</label>
-                            <input type="file"
+                        <div class="form-group mt-4">
+                            <label for="image">RECIPE IMAGE</label>
+                            <input type="file" 
                                     class="form-control @error('image') is-invalid @enderror"
                                     name="image"
                                     id="image">
@@ -391,7 +391,8 @@
 
     flatpickr("#published_at", {
         enableTime: true,
-        dateFormat: "Y-m-d H:i"
+        dateFormat: "Y-m-d H:i",
+        minDate:"today"
     });
 </script>
 @endsection

@@ -117,8 +117,8 @@
     <!-- Bootstrap Static Header -->
     <div class="jumbotron bg-cover text-white">
         <div class="container py-5 text-center" style="height:26rem">
-            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem; text-shadow: 5px 5px 10px black;">Fresh Ingredients, Better Taste</h1>
-            <p class="font-italic mb-0" style="font-size: 1.5rem; text-shadow: 5px 5px 10px black;">Welcome, Name To Foodie</p>
+            <h1 class="display-4 font-weight-bold" style="padding-top: 6rem; text-shadow: 5px 5px 10px black;">Welcome To Foodie</h1>
+            <p class="font-italic mb-0" style="font-size: 1.5rem; text-shadow: 5px 5px 10px black;">Fresh Ingredients, Better Taste</p>
         </div>
     </div>
 
