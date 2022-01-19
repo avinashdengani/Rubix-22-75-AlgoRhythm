@@ -133,42 +133,42 @@
                       <div class="carousel-item active" data-bs-interval="10000">
                         <div class="row h-100 align-items-center">
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Apple</h5>
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Butter</h5>
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Peanuts</h5>
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Chicken</h5>
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Lays</h5>
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="images/vendor/apple.jpg" />
+                            <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
                               <div class="card-body ps-0">
                                 <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Cookies</h5>
                               </div>
@@ -205,7 +205,6 @@
     <script src="{{asset('js/products/delete_product.js')}}"></script>
     <script>
         const addproductsInGroceryList = function (data){
-            console.log(data);
             itemsList = $("#items-list");
 
             for(let i in data){

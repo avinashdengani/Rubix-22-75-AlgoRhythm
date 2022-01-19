@@ -27,13 +27,19 @@ class UserProductController extends Controller
         ];
         $this->validate($request, $rules);
 
-        Storeroom::create([
-            'user_id' => auth()->user()->id,
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity,
-            'unit_id' => $request->unit_id
-        ]);
-        // session()->flash('success', 'Product added successfully in your list!');
+        $productExist = Storeroom::where('user_id', auth()->user()->id)->where('product_id' ,$request->product_id)->exists();
+        if(!$productExist){
+            Storeroom::create([
+                'user_id' => auth()->user()->id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
+                'unit_id' => $request->unit_id
+            ]);
+            return true;
+        }
+
+        return false;
+        
     }
     public function grocery()
     {

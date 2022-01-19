@@ -7,7 +7,6 @@ const addproductNodes = function (data, category){
             select = "selected";
         }
         product_id.append(`<option value="${data[i]['id']}" ${select}>` + data[i]['name'] + `</option>`);
-        console.log(data[i]['name']);
     }
 }
 
@@ -62,7 +61,6 @@ const ajaxMethodForCategory = function (route, csrf_token, category_id, category
 }
 
 const ajaxMethodForProduct = function (route, formData,csrf_token, user_id, routeForList){
-    console.log(routeForList);
     $.ajax(
         {
             type: 'POST',
@@ -77,7 +75,12 @@ const ajaxMethodForProduct = function (route, formData,csrf_token, user_id, rout
                 $(".product_id_error").html('');
                 $(".quantity_error").html('');
                 $(".unit_id_error").html('');
-                popUpMessage('bg-success', "Product added successfully in your list!");
+                if(data){
+                    popUpMessage('bg-success', "Product added successfully in your list!");
+                }else{
+                    popUpMessage('bg-danger', "Product already exists in your list!");
+                }
+                
                 ajaxMethodForGroceryList(routeForList, csrf_token, user_id);
             },
             error: function (e){
@@ -90,7 +93,6 @@ const ajaxMethodForProduct = function (route, formData,csrf_token, user_id, rout
                 if(e.responseJSON.errors['category_id'] == undefined  && e.responseJSON.errors['product_id'] == undefined) {
                     popUpMessage('bg-danger', " Some error occured! Please try again later.");
                 }
-                console.log(e);
             }
         }
     );
