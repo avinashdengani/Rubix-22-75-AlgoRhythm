@@ -39,6 +39,8 @@ Route::resource('recipes', RecipesController::class);
 Route::resource('users.products', UserProductController::class);
 
 Route::put('users/{user}/products/{product}/mark-as-purchased', [UserProductController::class, 'markAsPurchased'])->name('users.products.mark-as-purchased');
+Route::post('users/{user}/purchase', [UserProductController::class, 'purchase'])->name('users.products.purchase');
+Route::post('purchasedProducts/ajax', [UserProductController::class, 'getPurchasedProductsJson'])->name('user.purchasedProducts');
 
 Route::resource('products', ProductsController::class);
 Route::post('products/ajax', [ProductsController::class, 'getProductsForCategory'])->name('products.getDataForCategory');

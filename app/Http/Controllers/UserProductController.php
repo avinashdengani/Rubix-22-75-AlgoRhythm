@@ -87,6 +87,20 @@ class UserProductController extends Controller
         return $products;
     }
 
+    public function getPurchasedProductsJson(): JsonResponse
+    {
+        $products = $products = Storeroom::where('user_id', auth()->user()->id)
+                                        ->isPurchased()
+                                        ->where('isConsumed', 0)
+                                        ->latest('updated_at')
+                                        ->with('product', 'unit')
+                                        ->get();
+
+        $data = [];
+        $data['products'] = $products;
+        return JsonResponse::fromJsonString(json_encode($data));                                        
+    }
+
     public function destroy(User $user, Product $product)
     {
         $storeroomProduct =
@@ -120,5 +134,40 @@ class UserProductController extends Controller
 
         session()->flash('success', 'Product Added In Your Storeroom!');
         return redirect()->back();
+    }
+
+    public function purchase(Request $request, User $user){
+        $rules = [
+            'product_id' => 'required|exists:products,id',
+            'unit_id' => 'required|exists:units,id',
+            'quantity' => 'required|numeric',
+            'expiry_date' => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $product = Storeroom::where('user_id', auth()->user()->id)
+                                ->where('product_id', $request->product_id)
+                                ->isNotPurchased()
+                                ->where('isConsumed', 0)
+                                ->exists();
+
+        if($product){
+            $product->expiry_date = $request->expiry_date;
+            $product->isPurchased = 1;
+            $product->quantity = $request->quantity;
+            $product->unit_id = $request->unit_id;
+            $product->save();
+        }
+        else{
+            $StoreroomProductPurchased = Storeroom::create([
+                'user_id' => auth()->user()->id,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
+                'unit_id' => $request->unit_id,
+                'expiry_date' => $request->expiry_date,
+                'isPurchased' => 1
+            ]);
+        }
     }
 }

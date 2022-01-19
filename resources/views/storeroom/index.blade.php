@@ -139,7 +139,9 @@ h1 {
                 </div>
                 <div class="row flex-center">
                     <div>
-                        <a href="" class="btn bg-lime float-end mb-3 mt-3"> <i class="fa fa-plus me-2" style="font-size: 12px;"></i>Add Item</a>
+                        <a href="#add-product-in-storeroom-form" class="btn bg-lime float-end mb-3 mt-3" id="add-items-btn">
+                            <i class="fa fa-plus me-2" style="font-size: 12px;"></i>Add Item
+                        </a>
                     </div>
                     <div class="col-12">
 
@@ -149,178 +151,7 @@ h1 {
                                 <div class="carousel-item active" data-bs-interval="10000">
 
 
-                        <div class="row h-100 align-items-center">
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Apple</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Butter</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Peanuts</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Chicken</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Lays</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Cookies</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row h-100 align-items-center">
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Apple</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Butter</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Peanuts</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Chicken</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Lays</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                <div class="card card-span round-circle" style="border-color: white"><img class="img-fluid round-circle h-100" src="{{ asset('images/ui/apple.jpg') }}" />
-                                    <div class="card-body ps-0">
-                                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">Cookies</h5>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="">Unit: 1.5 (kg)</p>
-                                        <p class="">Expiry Date: 15/02/2022</p>
-                                        <a href="" class="btn bg-lime float-end ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="" class="btn bg-lime float-end"><i class="fa fa-minus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row pb-5 mb-4" id="purchased-products-list">
 
                         </div>
                       </div>
@@ -332,16 +163,13 @@ h1 {
                 </div>
               </div>
             </div><!-- end of .container-->
-          </section>
-
-
-
-    </div>
+        </section>
+       </div>
 
 </div>
 
 <div class="container">
-    <form id="add-product-in-grocery-form" action="#" method="POST" style="overflow: hidden" class="col-md-12">
+    <form id="add-product-in-storeroom-form" action="#" method="POST" style="overflow: hidden" class="col-md-12">
         <div class="m-5">
             <div class="d-flex flex-row justify-content-between my-input">
                 {{-- Dropdown --}}
@@ -389,13 +217,14 @@ h1 {
                     type="text"
                     style="background-color: white;"
                     placeholder="Select Expiry Date"
-                    class="form-control"
+                    class="form-control expiry_date"
                     name="expiry_date"
                     value="{{ old('expiry_date') }}"
                     id="expiry_date">
+                    <small id="emailHelp" class="form-text text-danger expiry_date_error"></small>
             </div>
             <div class="form-group m-2 d-flex flex-row col-md-6"  style=" background-color:white" >
-                <button class="btn btn-success btn-2x m-2" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
+                <button class="btn btn-success btn-2x m-2" id="add-product-in-grocery" type="button" onclick="submitAddProductForm(`{{route('users.products.purchase', auth()->user()->id )}}`, `{{ auth()->user()->id }}`,  `{{route('user.purchasedProducts')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
             </div>
             <p class="m-3">Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
         </div>
@@ -413,6 +242,56 @@ h1 {
 
     </script>
     <script src="{{asset('js/products/add_product.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('js/storeroom/add_product_in_storeroom.js')}}"></script>
+    <script>
+    
+    
+    const addproductsInStoreroom = function (data){
+            
+    itemsList = $("#purchased-products-list");
+
+    for(let i in data){
+        let j=i;
+
+        itemsList.append(`
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-5">
+                <!-- Card-->
+                <div class="shadow card border-0 rounded">
+                    <img class="img-fluid round-circle h-100"
+                        src="{{ url('storage')}}`+ '/' + data[i]['product']['image'] + `"
+                        style="width:300px !important; height:300px !important;" />
+                    <div class="card-header">
+                        <h5 class="text-center fw-bolder text-1000 text-truncate mb-2">${data[i]['product']['name']}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <p class="">Unit: ${data[i]['quantity']} ${data[i]['unit']['name']}</p>
+                            <p class="">Product will expire <strong style="font-size:15px;" class="badge ${getDateDifference(data[i]['expiry_date']) < 7 ? 'bg-danger' : 'bg-success'}">${moment(data[i]['expiry_date'], "YYYY-MM-DD").fromNow()}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                `);
+            }
+        }
+
+
+        function getDateDifference(date){
+            var date1 = new Date();
+            var date2 = new Date(date);
+
+            // To calculate the time difference of two dates
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+
+            // To calculate the no. of days between two dates
+            return Difference_In_Time / (1000 * 3600 * 24);
+        }
+        let route = `{{ route('user.purchasedProducts') }}`;
+        let user_id = `{{ auth()->user()->id }}`;
+        let csrf_token = '{{ csrf_token() }}';
+        ajaxMethodForStoreroomProducts(route, csrf_token, user_id);
+    </script>
 
     <script src="{{asset('js/products/delete_product.js')}}"></script>
     <script>

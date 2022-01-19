@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +29,21 @@ class Storeroom extends Model
     {
         return $query->where('isPurchased', self::PURCHASED);
     }
+    public function getExpiryAttribute()
+    {
+        $expiry = new Carbon($this->expiry_date);
+        $now = Carbon::now();
 
+        return ($expiry->diff($now)->days < 1) ? 'today' : $expiry->diffForHumans($now);
+    }
+
+    public function getExpiryBadgeAttribute()
+    {
+        $expiry = new Carbon($this->expiry_date);
+        $now = Carbon::now();
+
+        return ($expiry->diff($now)->days < 7) ? 'bg-danger' : 'bg-success';
+    }
     public function scopeIsNotFavourite($query)
     {
         return $query->where('isFavourite', self::NOT_FAVOURITE);

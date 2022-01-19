@@ -24,7 +24,7 @@ class CreateStoreroomTable extends Migration
             $table->tinyInteger('isFavourite')->default(0);
             $table->tinyInteger('isConsumed')->default(0);
 
-            $table->date('expiry_date')->nullable();
+            $table->timestamp('expiry_date')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

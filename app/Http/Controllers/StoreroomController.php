@@ -14,10 +14,6 @@ class StoreroomController extends Controller
         $categories = Category::all();
         $units = Unit::all();
 
-        $productsInStoreroom = Storeroom::where('user_id', auth()->user()->id)
-                ->isPurchased()
-                ->with('product')
-                ->latest('updated_at')->get();
-        return view('storeroom.index', compact(['categories', 'units', 'productsInStoreroom']));
+        return view('storeroom.index', compact(['categories', 'units']));
     }
 }
