@@ -258,142 +258,145 @@
         }
     </script>
 
-<script>
-    function swalFireForEditGrocery(product_id, quantity)
-    {
-        let user_id = "{{ auth()->user()->id }}";
-        let route = `{{ url('users/' . auth()->user()->id . '/products') }}` + "/" + product_id;
-        let routeForGroceryList = `{{ url('userProducts/ajax') }}`;
-        let csrf_token = "{{ csrf_token() }}";
-        Swal.fire({
-                icon: "",
-                html: `
-                <form action="${route}" method="POST" id="add-grocery-form" class="d-flex flex-column" style="overflow: hidden">
-                    @csrf
-                    @method('PUT')
+    <script>
+        function swalFireForEditGrocery(product_id, quantity)
+        {
+            let user_id = "{{ auth()->user()->id }}";
+            let route = `{{ url('users/' . auth()->user()->id . '/products') }}` + "/" + product_id;
+            let routeForGroceryList = `{{ url('userProducts/ajax') }}`;
+            let csrf_token = "{{ csrf_token() }}";
+            Swal.fire({
+                    icon: "",
+                    html: `
+                    <form action="${route}" method="POST" id="add-grocery-form" class="d-flex flex-column" style="overflow: hidden">
+                        @csrf
+                        @method('PUT')
 
-                    <div class="row">
-                        <div class="form-group " style=" background-color:white" >
-                            <label for="quantity" style="font-weight: bolder" class="m-2">Quantity</label>
-                            <input
-                                type="number"
-                                class="form-control quantity"
-                                name="quantity"
-                                value="${quantity}">
-                            <small id="emailHelp" class="form-text text-danger quantity_error"></small>
+                        <div class="row">
+                            <div class="form-group " style=" background-color:white" >
+                                <label for="quantity" style="font-weight: bolder" class="m-2">Quantity</label>
+                                <input
+                                    type="number"
+                                    class="form-control quantity"
+                                    name="quantity"
+                                    value="${quantity}">
+                                <small id="emailHelp" class="form-text text-danger quantity_error"></small>
+                            </div>
+                            @error('quantity')
+                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
-                        @error('quantity')
-                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        {{-- Dropdown --}}
-                        <div class="form-group " style=" background-color:white" >
-                            <label for="unit_id" style="font-weight: bolder" class="m-2">Unit</label>
-                            <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
-                            <option></option>
-                            @foreach ($units as $unit)
-                                <option value="{{ $unit->id }}" >{{ $unit->name }}</option>
-                            @endforeach
-                            </select>
-                                <small id="emailHelp" class="form-text text-danger unit_id_error"></small>
+                        <div class="row">
+                            {{-- Dropdown --}}
+                            <div class="form-group " style=" background-color:white" >
+                                <label for="unit_id" style="font-weight: bolder" class="m-2">Unit</label>
+                                <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
+                                <option></option>
+                                @foreach ($units as $unit)
+                                    <option value="{{ $unit->id }}" >{{ $unit->name }}</option>
+                                @endforeach
+                                </select>
+                                    <small id="emailHelp" class="form-text text-danger unit_id_error"></small>
+                            </div>
+                            @error('unit_id')
+                                <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
-                        @error('unit_id')
-                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
 
-                    <button class="btn btn-success mt-3 " type="submit">Save</button>
-                </form>
-                `,
-                buttonsStyling: true,
-                showCancelButton: true,
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-            });
-    }
-</script>
-
-
-<script>
-    $("#add-product-form").validate({
-        rules:
-            {
-                name: {
-                    required: true
-                },
-                calories: {
-                    required: true,
-                    number: true
-                },
-                image: {
-                    required: true
-                },
-                category_id: {
-                    required: true
-                },
-            },
-        errorElement: 'p',
-        errorPlacement: function(error, element) {
-            if (error) {
-                error.insertAfter(element);
-                error.addClass('text-danger');
-            }
-        },
-    });
-</script>
-
-<script>
-    function swalFireForMarkAsPurchased(product_id)
-    {
-        let route = `{{ url('users/' . auth()->user()->id . '/products') }}` + `/` + product_id  + `/mark-as-purchased`;
-        Swal.fire({
-                icon: "",
-                html: `
-                <form action="${route}" method="POST" id="add-grocery-form" class="d-flex flex-column" style="overflow: hidden">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="">
-                        <label for="expiry_date"></label>
-                        <input
-                            type="text"
-                            style="background-color: white;"
-                            placeholder="Select Expiry Date"
-                            class="form-control"
-                            name="expiry_date"
-                            value="{{ old('expiry_date') }}"
-                            id="expiry_date">
-                    </div>
-                        <button class="btn btn-success mt-3 " type="submit">Edit Changes</button>
-                </form>
-                `,
-                buttonsStyling: true,
-                showCancelButton: true,
-                showConfirmButton: false,
-                customClass: 'swal-wide',
-            });
-            flatpickr("#expiry_date", {
-                enableTime: false,
-                dateFormat: "Y-m-d H:i",
-                minDate:"today"
-            });
-    }
-
-</script>
-
-<script>
-    function mediaWatcherFunction(mediaWatcher) {
-        if (mediaWatcher.matches) {
-            $(".my-input").removeClass("flex-row");
-            $(".my-input").addClass("flex-column");
-        } else {
-            $(".my-input").addClass("flex-row");
-            $(".my-input").removeClass("flex-column");
+                        <button class="btn btn-success mt-3 " type="submit">Save</button>
+                    </form>
+                    `,
+                    buttonsStyling: true,
+                    showCancelButton: true,
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                });
         }
-    }
-    var mediaWatcher = window.matchMedia("(max-width: 800px)");
-    mediaWatcherFunction(mediaWatcher);
-    mediaWatcher.addListener(mediaWatcherFunction);
-</script>
+    </script>
+
+
+    <script>
+        $("#add-product-form").validate({
+            rules:
+                {
+                    name: {
+                        required: true
+                    },
+                    calories: {
+                        required: true,
+                        number: true
+                    },
+                    image: {
+                        required: true
+                    },
+                    category_id: {
+                        required: true
+                    },
+                },
+            errorElement: 'p',
+            errorPlacement: function(error, element) {
+                if (error) {
+                    error.insertAfter(element);
+                    error.addClass('text-danger');
+                }
+            },
+        });
+    </script>
+
+    <script>
+        function swalFireForMarkAsPurchased(product_id)
+        {
+            let route = `{{ url('users/' . auth()->user()->id . '/products') }}` + `/` + product_id  + `/mark-as-purchased`;
+            Swal.fire({
+                    icon: "",
+                    html: `
+                    <form action="${route}" method="POST" id="add-grocery-form" class="d-flex flex-column" style="overflow: hidden">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="">
+                            <label for="expiry_date"></label>
+                            <input
+                                type="text"
+                                style="background-color: white;"
+                                placeholder="Select Expiry Date"
+                                class="form-control"
+                                name="expiry_date"
+                                value="{{ old('expiry_date') }}"
+                                id="expiry_date">
+                                @error('expiry_date')
+                                    <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                        </div>
+                            <button class="btn btn-success mt-3 " type="submit">Edit Changes</button>
+                    </form>
+                    `,
+                    buttonsStyling: true,
+                    showCancelButton: true,
+                    showConfirmButton: false,
+                    customClass: 'swal-wide',
+                });
+                flatpickr("#expiry_date", {
+                    enableTime: false,
+                    dateFormat: "Y-m-d H:i",
+                    minDate:"today"
+                });
+        }
+
+    </script>
+
+    <script>
+        function mediaWatcherFunction(mediaWatcher) {
+            if (mediaWatcher.matches) {
+                $(".my-input").removeClass("flex-row");
+                $(".my-input").addClass("flex-column");
+            } else {
+                $(".my-input").addClass("flex-row");
+                $(".my-input").removeClass("flex-column");
+            }
+        }
+        var mediaWatcher = window.matchMedia("(max-width: 800px)");
+        mediaWatcherFunction(mediaWatcher);
+        mediaWatcher.addListener(mediaWatcherFunction);
+    </script>
 @endsection

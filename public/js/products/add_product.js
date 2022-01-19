@@ -37,6 +37,8 @@ var submitGroceryListForm = function(route, user_id, routeForList, csrf_token) {
     let unit_id_val = $("#add-product-in-grocery-form").find('.unit_id').val();
     $(".category_id_error").html('');
     $(".product_id_error").html('');
+    $(".quantity_error").html('');
+    $(".unit_id_error").html('');
     let formData = {category_id: category_id_val, product_id: product_id_val, quantity: quantity_val, unit_id: unit_id_val, _token: csrf_token};
     ajaxMethodForProduct(route, formData, csrf_token, user_id, routeForList);
 }
@@ -80,17 +82,28 @@ const ajaxMethodForProduct = function (route, formData,csrf_token, user_id, rout
                 }else{
                     popUpMessage('bg-danger', "Product already exists in your list!");
                 }
-                
+
                 ajaxMethodForGroceryList(routeForList, csrf_token, user_id);
             },
             error: function (e){
+                let flag = true;
                 if(e.responseJSON.errors['category_id'] !== undefined) {
                     $(".category_id_error").html(e.responseJSON.errors['category_id'][0]);
+                    flag = false;
                 }
                 if(e.responseJSON.errors['product_id'] !== undefined) {
                     $(".product_id_error").html(e.responseJSON.errors['product_id'][0]);
+                    flag = false;
                 }
-                if(e.responseJSON.errors['category_id'] == undefined  && e.responseJSON.errors['product_id'] == undefined) {
+                if(e.responseJSON.errors['quantity'] !== undefined) {
+                    $(".quantity_error").html(e.responseJSON.errors['quantity'][0]);
+                    flag = false;
+                }
+                if(e.responseJSON.errors['unit_id'] !== undefined) {
+                    $(".unit_id_error").html(e.responseJSON.errors['unit_id'][0]);
+                    flag = false;
+                }
+                if(flag) {
                     popUpMessage('bg-danger', " Some error occured! Please try again later.");
                 }
             }

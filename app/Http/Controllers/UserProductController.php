@@ -14,7 +14,10 @@ class UserProductController extends Controller
 {
     public function index()
     {
-        //
+        $categories = Category::all();
+        $units = Unit::all();
+
+        return view('storeroom.index', compact(['categories', 'units']));
     }
 
     public function store(Request $request)
@@ -27,7 +30,10 @@ class UserProductController extends Controller
         ];
         $this->validate($request, $rules);
 
-        $productExist = Storeroom::where('user_id', auth()->user()->id)->where('product_id' ,$request->product_id)->exists();
+        $productExist = Storeroom::where('user_id', auth()->user()->id)
+                            ->where('product_id' ,$request->product_id)
+                            ->isNotPurchased()
+                            ->exists();
         if(!$productExist){
             Storeroom::create([
                 'user_id' => auth()->user()->id,
@@ -77,13 +83,14 @@ class UserProductController extends Controller
 
     private function getProductsForUserInGroceryList()
     {
-        $products = Storeroom::where('user_id', auth()->user()->id)->where('isPurchased', 0)->latest('updated_at')->with('product', 'unit')->get();
+        $products = Storeroom::where('user_id', auth()->user()->id)->isNotPurchased()->latest('updated_at')->with('product', 'unit')->get();
         return $products;
     }
 
     public function destroy(User $user, Product $product)
     {
-        $storeroomProduct = Storeroom::where('user_id', $user->id)
+        $storeroomProduct =
+                            Storeroom::where('user_id', $user->id)
                                 ->where('product_id', $product->id)
                                 ->where('isPurchased', 0)
                                 ->where('isConsumed', 0)
@@ -94,8 +101,18 @@ class UserProductController extends Controller
     }
     public function markAsPurchased(Request $request, User $user, Product $product)
     {
-        $storedProduct = Storeroom::where('user_id', auth()->user()->id)
-                                ->where('product_id', $product->id)->first();
+        $rules = [
+            'expiry_date' => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $storedProduct =
+                 Storeroom::where('user_id', auth()->user()->id)
+                        ->where('product_id', $product->id)
+                        ->isNotPurchased()
+                        ->first();
+
         $storedProduct->update([
             'isPurchased' => Storeroom::PURCHASED,
             'expiry_date' => $request->expiry_date

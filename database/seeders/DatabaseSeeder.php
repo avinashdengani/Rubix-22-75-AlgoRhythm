@@ -100,23 +100,23 @@ class DatabaseSeeder extends Seeder
         }
 
         Unit::create([
-            'name' => 'kg'
+            'name' => 'killograms'
         ]);
 
         Unit::create([
-            'name' => 'g'
+            'name' => 'grams'
         ]);
 
         Unit::create([
-            'name' => 'ml'
+            'name' => 'millilitres'
         ]);
 
         Unit::create([
-            'name' => 'l'
+            'name' => 'litres'
         ]);
 
         Unit::create([
-            'name' => 'unit'
+            'name' => 'units'
         ]);
     }
 }
