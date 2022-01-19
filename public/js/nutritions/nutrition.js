@@ -22,7 +22,7 @@ const onSuccessOfNutrtion = function(data) {
     let nutrients = data['hints'][0]['food']['nutrients'];
 
     innerHtmlData = `
-                        <h4>Search Resuts for <strong>"${$("#search-nutrition-input").val()}"</strong></h4>
+                        <h4>Search Results for <strong>"${$("#search-nutrition-input").val()}"</strong></h4>
                             <table class="table caption-top">
                                 <tbody>
                                     <tr>

@@ -55,7 +55,7 @@ class RecipesController extends Controller
 
         $recipe->healthlabels()->attach($request->healthlabel_id);
 
-        session()->flash('success', 'Recipe Created Successfully!');
+        session()->flash('success', 'Recipe Created Successfully View It In Blog Section!');
 
         return redirect()->back();
     }

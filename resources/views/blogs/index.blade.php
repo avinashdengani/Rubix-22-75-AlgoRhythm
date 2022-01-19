@@ -6,7 +6,7 @@
 <style>
 .bg-cover {
         background-size: cover !important;
-        background-image: url(images/ui/10.png) ;
+        background-image: url(images/ui/22.png) ;
 
     }
 
@@ -16,11 +16,6 @@
 
 }
 
-.bg-covering {
-    background-size: cover !important;
-    background-image: url("https://images.ctfassets.net/3s5io6mnxfqz/1ammRwvkhYhKcreYNUDFv4/e55cd1116eb5542e0402060b085a6168/AdobeStock_205001600.jpeg?fm=jpg&w=800&fl=progressive") ;
-
-}
 
     .card-block {
     font-size: 1em;
@@ -65,14 +60,21 @@
 @endsection
 
 @section('content')
+<!-- Bootstrap Static Header -->
+<div class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center" style="height:22rem">
+        <h1 class="display-4 font-weight-bold" style="padding-top: 6rem; text-shadow: 5px 5px 10px black;">Welcome To Blogs</h1>
+        <p class="font-italic mb-0" style="font-size: 1.5rem; text-shadow: 5px 5px 10px black;">Explore authentic recipes of our foodies from all around the world</p>
+    </div>
+</div>
 
 {{-- PRODUCT CARDS THRICE FOR MY RECIPES --}}
-<div class="container" style="padding-top: 0%;">
+<div class="container">
     <div class="text-center section">
-        <h1 class="mb-4">Explore Recipes added by our users</h1>
+        <h1 class="mb-2">Explore Recipes added by our Foodies</h1>
         <a href="#" style="font-size: 15px;color:black;font-weight:bold">Want To Add A Recipe?</a>
     </div>
-    <div class="row pb-5 mb-4">
+    <div class="row pb-5 mb-5">
         @foreach ($recipes as $recipe)
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->

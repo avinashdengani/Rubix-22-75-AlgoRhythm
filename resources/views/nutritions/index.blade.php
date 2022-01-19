@@ -6,7 +6,7 @@
 <style>
     .bg-cover {
         background-size: cover !important;
-        background-image: url(images/ui/header.png) ;
+        background-image: url(images/ui/21.png) ;
 
     }
 
@@ -126,7 +126,8 @@
         <div class="" style="max-width: 70%; margin: 0 auto;">
             <div class="mb-3">
                 <h2 class="text-center">Enter Product Name for Nutrition Value</h2>
-                <div class="input-group mb-3">
+                <h5 class="text-center m-5">It's wise to want to know the nutritional value of the foods you eat. A healthy diet is vital for feeling your best—strong, happy, and energetic.Find nutrition breakout right from an apple to any fancy dish, curated specially for our health freak foodies.</h5>
+                <div class="input-group ">
                     <input type="text" id="search-nutrition-input" class="form-control" placeholder="Item name" aria-label="Item name" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="search-nutrition"><i class="fas fa-search"></i></button>
                 </div>
@@ -141,7 +142,7 @@
 
 
     <!-- Bootstrap Static Header -->
-    <div class="jumbotron bg-covering text-white mt-3">
+    <div class="jumbotron bg-covering text-white mt-5">
         <div class="container py-5 text-center" style="height:22rem">
             <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;color: white; font-size: 2rem; text-shadow: 5px 5px 10px black;">Want To Know More About Us?</h1>
             <div class="container">

@@ -267,7 +267,7 @@
                             <label for="published_at">Published At</label>
                             <div class="d-flex flex-row">
                                 <input type="text"
-                                class="form-control"
+                                class="form-control bg-white"
                                 name="published_at"
                                 value="{{ old('published_at') }}"
                                 id="published_at">
@@ -304,7 +304,7 @@
                         <div class="col-md-6 form-group mt-3">
                             <label for="image">Image</label>
                             <input type="file"
-                                    class="form-control @error('image') is-invalid @enderror"
+                                    class="form-control bg-white @error('image') is-invalid @enderror"
                                     name="image"
                                     id="image">
                             @error('image')

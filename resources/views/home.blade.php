@@ -431,11 +431,11 @@
     <!-- Categories Section End -->
 
     <!-- Bootstrap Static Header -->
-    <div class="jumbotron bg-covering text-white mt-3">
-        <div class="container py-5 text-center" style="height:22rem">
+    <div class="jumbotron bg-covering text-white">
+        <div class="container text-center" style="height:22rem">
             <h1 class="display-4 font-weight-bold" style="padding-top: 6rem;color: white; font-size: 2rem; text-shadow: 5px 5px 10px black;">Want To Know More About Us?</h1>
             <div class="container">
-            <a class="btn btn-lg btn-success shadow mt-6" href="#" style="width: 10rem; align-items:center">Contact Us</a>
+            <a class="btn btn-lg btn-success shadow mt-6" href="{{ route('contact') }}" style="width: 10rem; align-items:center">Contact Us</a>
             </div>
         </div>
     </div>
