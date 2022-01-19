@@ -128,11 +128,11 @@
                 <h2 class="text-center">Enter Product Name for Nutrition Value</h2>
                 <h5 class="text-center m-5">It's wise to want to know the nutritional value of the foods you eat. A healthy diet is vital for feeling your best—strong, happy, and energetic.Find nutrition breakout right from an apple to any fancy dish, curated specially for our health freak foodies.</h5>
                 <div class="input-group ">
-                    <input type="text" id="search-nutrition-input" class="form-control" placeholder="Item name" aria-label="Item name" aria-describedby="button-addon2">
+                    <input type="text" id="search-nutrition-input" class="form-control " placeholder="Item name" aria-label="Item name" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="search-nutrition"><i class="fas fa-search"></i></button>
                 </div>
 
-                <div class="nutrition-searched-results">
+                <div class="nutrition-searched-results mt-4">
 
                 </div>
             </div>

@@ -122,7 +122,7 @@
             </p>
 
             <br>
-            <a href="#" class="mt-auto btn btn-success " style="font-weight: bolder">Add Recipe</a>
+            <a href="{{route('recipes.create')}}" class="mt-auto btn btn-success " style="font-weight: bolder">Add Recipe</a>
           </div>
         </div>
         <!-- Carousel start -->

@@ -28,7 +28,11 @@
         overflow: hidden;
         margin-top: 10px;
     }
+    .bg-covering {
+    background-size: cover !important;
+    background-image: url("https://images.ctfassets.net/3s5io6mnxfqz/1ammRwvkhYhKcreYNUDFv4/e55cd1116eb5542e0402060b085a6168/AdobeStock_205001600.jpeg?fm=jpg&w=800&fl=progressive") ;
 
+}
     .categories .container-fluid {
         padding-right: 5px;
     }
@@ -139,7 +143,7 @@
                     <div class="categories__text">
                         <h1>Track Product Expiry</h1>
                         <p>Tells you when your food is going to expire so that you can use it before it does. Record the expiry dates of your food/drinks</p>
-                        <a href="#">Add product</a>
+                        <a href="{{route('storeroom.index')}}">Add product</a>
                     </div>
                 </div>
             </div>
@@ -151,7 +155,7 @@
                             <div class="categories__text">
                                 <h4>Grocery List</h4>
                                 <p>Use this to make your personal grocery shopping  list, before you forget it.</p>
-                                <a href="#">Add Items</a>
+                                <a href="{{route('grocery.index')}}">Add Items</a>
                             </div>
                         </div>
                     </div>
@@ -160,7 +164,7 @@
                             <div class="categories__text" >
                                 <h4>Browse Recipes</h4>
                                 <p>Find the perfect recipe by searching through our catalogue for the ingredients you have on hand.</p>
-                                <a href="#">Check now</a>
+                                <a href="{{route('recipes.index')}}">Check now</a>
                             </div>
                         </div>
                     </div>
@@ -169,7 +173,7 @@
                             <div class="categories__text" >
                                 <h4>My Recipes</h4>
                                 <p>With enough recipes uploaded, you can even create your own digital cookbook to have all your recipes at a glance, alongside ours.</p>
-                                <a href="#">View Now</a>
+                                <a href="{{{route('blogs.index')}}}">View Now</a>
                             </div>
                         </div>
                     </div>
@@ -178,7 +182,7 @@
                             <div class="categories__text">
                                 <h4>Nutrition Value</h4>
                                 <p>Tracking your food intake will give you insight into many aspects of your eating habits.</p>
-                                <a href="#">Track Now</a>
+                                <a href="{{route('nutritions.index')}}">Track Now</a>
                             </div>
                         </div>
                     </div>
@@ -190,170 +194,31 @@
     </section>
     <!-- Categories Section End -->
 
-    <!-- Menu Start -->
-    <div class="container-xxl py-5 mt-3" style="background-color: white">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="mb-5">Most Popular Recipes</h1>
-            </div>
-            <div class="tab-class text-center" >
-                <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                    <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1" style="color: #338E3C">
-                            <i class="fas fa-coffee fa-2x" style="color: #338E3C"></i>
-                            <div class="ps-3">
-
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Popular</h6>
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Breakfast</h6>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2" style="color: #338E3C">
-                            <i class="fas fa-hamburger fa-2x" style="color: #338E3C"></i>
-                            <div class="ps-3">
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Special</h6>
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Lunch</h6>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3" style="color: #338E3C">
-                            <i class="fas fa-utensils fa-2x " style="color: #338E3C"></i>
-                            <div class="ps-3">
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Lovely</h6>
-                                <h6 class="mt-n1 mb-0" style="color: #338E3C">Dinner</h6>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
+       <!-- Card Start -->
+       <div class="pt-5">
+            <div class="container mt-lg-5 ">
+                <div class="card p-3 shadow rounded">
+                    <div class="row ">
+                        <div class="col-md-7 px-3">
+                            <div class="card-block px-6">
+                                <h4 class="card-title" style="font-weight: bold">Add Your Own Recipe </h4>
+                                <p class="card-text mt-5">
+                                    With enough recipes uploaded, you can even create your own digital cookbook to have all your recipes at a glance, alongside ours. Be creative, dig out the family cookbook, and share with your friends—we can’t wait.
+                                </p>
+                                <br>
+                                <a href="{{route('recipes.create')}}" class="mt-auto btn btn-success " style="font-weight: bolder">Add Recipe</a>
                             </div>
                         </div>
-                    </div>
-                    <div id="tab-2" class="tab-pane fade show p-0">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
+                        <!-- Carousel start -->
+                        <div class="col-md-5 bg-covering">
 
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab-3" class="tab-pane fade show p-0">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('images/ui/medu.jpg') }}" alt="" style="width: 80px;">
-                                    <div class="w-100 d-flex flex-column text-start ps-4">
-                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Chicken Burger</span>
-
-                                        </h5>
-                                        <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
-    <!-- Menu End -->
+       </div>
+      <!-- End of card -->
+
 
 
     <!-- Categories Section Begin -->

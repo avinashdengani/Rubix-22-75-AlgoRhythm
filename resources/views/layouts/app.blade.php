@@ -34,7 +34,24 @@
 
 <style>
 
+.footer{
+  background: #338E3C;
+  color:white;
 
+  .links{
+    ul {list-style-type: none;}
+    li a{
+      color: white;
+    }
+  }
+  .about-company{
+    i{font-size: 25px;}
+  }
+  .location{
+    i{font-size: 18px;}
+  }
+  .copyright p{border-top:1px solid #fff;}
+}
 
 @media (max-width:600px){
     .navbar{
@@ -50,7 +67,7 @@
         <nav class="navbar navbar-expand-md navbar-light sticky-top bg-white">
         {{-- style="background-color: #DCE775;height:4rem;"> --}}
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <img src="{{ asset('images/logo/foodie_no_bg_2.png') }}" width="80">
                   </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -64,22 +81,22 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto" style="color: black;font-weight:bolder">
+                    <ul class="navbar-nav ms-auto bg-white" style="color: black;font-weight:bolder">
                         <!-- Authentication Links -->
                         @auth
-                            <li class="nav-item">
+                            <li class="nav-item bg-white">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item bg-white">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('storeroom.index') }}">{{ __('Store Room') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item bg-white">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('nutritions.index') }}">{{ __('Nutritions') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item bg-white">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('grocery.index') }}">{{ __('Grocery List') }}</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item bg-white dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-black h5 font-weight-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Recipes
                                 </a>
@@ -89,15 +106,8 @@
                                     <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('recipes.create') }}">{{ __('Add your own recipe') }}</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-black h5 font-weight-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Know More
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('about') }}">{{ __('About') }}</a>
-                                    <a class="dropdown-item text-black h5 font-weight-bolder" href="{{ route('contact') }}">{{ __('Contact') }}</a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-black h5 font-weight-bolder " href="{{ route('blogs.index') }}">Blogs</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-black h5 font-weight-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -147,6 +157,40 @@
             </a>
         </main>
     </div>
+    <div class="mt-3 pt-4 pb-3 footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-xs-12 about-company">
+              <h2 class="m-2">FOODIE</h2>
+              <p class="pr-5 text-white m-2">Our idea is to create a space for people where they can easily track the expiration date of the products they have and use them efficiently before they expire.
+         </p>
+
+            </div>
+            <div class="col-lg-3 col-xs-12 links">
+              <h4 class="m-2">Links</h4>
+                <ul class="navbar-nav m-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-white h5 font-weight-bolder" href="{{ route('about') }}">{{ __('About') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white h5 font-weight-bolder" href="{{ route('contact') }}">{{ __('Contact') }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-xs-12 location">
+              <h4 class="m-2">Location</h4>
+              <p class="m-2">Mumbai, Maharashtra</p>
+              <p class="m-2"><i class="fa fa-phone mr-3"></i>022-252525652</p>
+              <p><i class="fa fa-envelope-o m-2"></i>info@foodie.com</p>
+            </div>
+          </div>
+          <div class="row mt-1">
+            <div class="col copyright m-2">
+              <p class=""><small class="text-white-50">© 2022. All Rights Reserved.</small></p>
+            </div>
+            </div>
+        </div>
+        </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
