@@ -169,11 +169,12 @@ h1 {
 </div>
 
 <div class="container">
-    <form id="add-product-in-storeroom-form" action="#" method="POST" style="overflow: hidden" class="col-md-12">
+    <form id="add-product-in-storeroom-form" class="rounded shadow-lg" action="#" method="POST" style="overflow: hidden" class="col-md-12">
         <div class="m-5">
+            <p class="h2 text-center">Add Items</p>
             <div class="d-flex flex-row justify-content-between my-input">
                 {{-- Dropdown --}}
-                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                <div class="form-group col-md-6 m-2 p-2" style=" background-color:white" >
                     <label for="category_id" style="font-weight: bolder">Select Category</label>
                     <select name="category_id" id="category_id" class="form-control select2 category_id">
                         <option></option>
@@ -230,20 +231,27 @@ h1 {
         </div>
     </form>
     {{-- Dropdown --}}
-        <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
-            <label for="recipe_id" style="font-weight: bolder">Search Recipes For Available Products</label>
-            <select name="recipe_id[]" id="recipe_id" class="form-control select2 recipe_id" multiple>
-                <option></option>
-            </select>
-                <small id="emailHelp" class="form-text text-danger product_id_error"></small>
-        </div>
-        <button class="btn btn-success" id="search-recipes-btn-in-storeroom" >Search Recipes</button>
+        <div class="mt-5 mb-5 rounded shadow-lg pt-4">
+            <p class="h2 text-center">Search Recipes For Available Products</p>
+            <div class="d-flex justify-content-center form-group m-2 p-2" style="background-color:white" >
+                {{-- <label for="recipe_id" style="font-weight: bolder"></label> --}}
+                <div class="col-md-6" style="min-width: 230px;">
+                    <select name="recipe_id[]" id="recipe_id" class="form-control select2 recipe_id" multiple>
+                        <option></option>
+                    </select>
 
-        <div class="container py-5">
-            <div class="search-results-count"></div>
-            <div class="row pb-0 mb-0 recipe-search-result"></div>
-            <div class="text-center">
-                <button class="recipe-load-more btn btn-success mt-5">Load More</button>
+                    <small id="emailHelp" class="form-text text-danger product_id_error"></small>
+            </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-success" id="search-recipes-btn-in-storeroom">Search Recipes</button>
+            </div>
+            <div class="container py-5">
+                <div class="search-results-count"></div>
+                <div class="row pb-0 mb-0 recipe-search-result"></div>
+                <div class="text-center">
+                    <button class="recipe-load-more btn btn-success mt-5">Load More</button>
+                </div>
             </div>
         </div>
 </div>
@@ -359,17 +367,20 @@ h1 {
     <script>
         initCategoriesAjax("{{route('products.getDataForCategory')}}" , "{{ csrf_token() }}");
     </script>
+
     <script>
         function swalFireForAddProduct()
         {
             Swal.fire({
-                    icon: "info",
-                    html: `Didn't found product? Add your own product now<br>
+                    showConfirmButton: false,
+                    html: `<div class="p-1">
+                    <i class="fas fa-info-circle text-center mb-2 text-darkgreen" style="font-size: 80px;"></i>
+                    <h3>Didn't find product? Add your own product now. </h3>
                     <form action="{{route('products.store')}}" method="POST" enctype='multipart/form-data' id="add-product-form">
                         @csrf
                         <div class="form-group" style=" background-color:white" >
-                            <label for="category_id" style="font-weight: bolder">Select Category</label><br>
-                            <select name="category_id" id="category_id" class="form-control select2 category_id" style=" background-color:white;">
+                            <h6 class="p-0 mt-1 mb-0" style="text-align: left;" for="category_id">Select Category</h6><br>
+                            <select name="category_id" id="category_id" class="form-control select2 category_id m-0 p-0" style="background-color:white;">
                                 <option></option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : ''}}>{{ $category->name }}</option>
@@ -379,8 +390,8 @@ h1 {
                                     <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Enter your product name</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 for="products" style="text-align: left;" class="mb-3 mt-4">Enter your product name</h6>
                             <input
                                 type="text"
                                 id="name"
@@ -391,8 +402,8 @@ h1 {
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Enter your product calories</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 class="mb-3 mt-4" style="text-align: left;" for="products">Enter your product calories</h6>
                             <input
                                 type="number"
                                 id="calories"
@@ -403,8 +414,8 @@ h1 {
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Choose product image</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 class="mb-3 mt-4" style="text-align: left;" for="products">Choose product image</h6>
                             <input
                                 type="file"
                                 id="image"
@@ -415,18 +426,16 @@ h1 {
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button class="btn btn-success" type="submit">Add Product</button>
+                    <button class="btn btn-success mt-3" type="submit">Add Product</button>
                     </form>
+                </div>
                     `,
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
-                    customClass: {
-                        confirmButton: "btn font-weight-bold btn-light",
-                        customClass: 'swal-wide',
-                    }
+                    buttonsStyling: false
+
                 });
         }
     </script>
+
 
     <script>
         function swalFireForEditGrocery(product_id, quantity)
@@ -537,6 +546,7 @@ h1 {
         mediaWatcher.addListener(mediaWatcherFunction);
 
         new MySmoothScroll("#add-items-btn");
+            $(".recipe-load-more").hide();
         searchRecipesOfStoreroomProducts();
     </script>
 @endsection

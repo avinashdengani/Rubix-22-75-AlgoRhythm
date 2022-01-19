@@ -189,17 +189,20 @@
     <script>
         initCategoriesAjax("{{route('products.getDataForCategory')}}" , "{{ csrf_token() }}");
     </script>
+
     <script>
         function swalFireForAddProduct()
         {
             Swal.fire({
-                    icon: "info",
-                    html: `Didn't found product? Add your own product now<br>
+                    showConfirmButton: false,
+                    html: `<div class="p-1">
+                    <i class="fas fa-info-circle text-center mb-2 text-darkgreen" style="font-size: 80px;"></i>
+                    <h3>Didn't find product? Add your own product now. </h3>
                     <form action="{{route('products.store')}}" method="POST" enctype='multipart/form-data' id="add-product-form">
                         @csrf
                         <div class="form-group" style=" background-color:white" >
-                            <label for="category_id" style="font-weight: bolder">Select Category</label><br>
-                            <select name="category_id" id="category_id" class="form-control select2 category_id" style=" background-color:white;">
+                            <h6 class="p-0 mt-1 mb-0" style="text-align: left;" for="category_id">Select Category</h6><br>
+                            <select name="category_id" id="category_id" class="form-control select2 category_id m-0 p-0" style="background-color:white;">
                                 <option></option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : ''}}>{{ $category->name }}</option>
@@ -209,8 +212,8 @@
                                     <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Enter your product name</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 for="products" style="text-align: left;" class="mb-3 mt-4">Enter your product name</h6>
                             <input
                                 type="text"
                                 id="name"
@@ -221,8 +224,8 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Enter your product calories</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 class="mb-3 mt-4" style="text-align: left;" for="products">Enter your product calories</h6>
                             <input
                                 type="number"
                                 id="calories"
@@ -233,8 +236,8 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group" style=" background-color:white" >
-                            <label for="products">Choose product image</label>
+                        <div class="form-group mt-2" style=" background-color:white" >
+                            <h6 class="mb-3 mt-4" style="text-align: left;" for="products">Choose product image</h6>
                             <input
                                 type="file"
                                 id="image"
@@ -245,15 +248,12 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button class="btn btn-success" type="submit">Add Product</button>
+                    <button class="btn btn-success mt-3" type="submit">Add Product</button>
                     </form>
+                </div>
                     `,
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
-                    customClass: {
-                        confirmButton: "btn font-weight-bold btn-light",
-                        customClass: 'swal-wide',
-                    }
+                    buttonsStyling: false
+
                 });
         }
     </script>
