@@ -33,7 +33,7 @@
 
 
         <div class="m-5">
-            <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row justify-content-between my-input">
                 {{-- Dropdown --}}
                 <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
                     <label for="category_id" style="font-weight: bolder">Select Category</label>
@@ -54,7 +54,7 @@
                         <small id="emailHelp" class="form-text text-danger product_id_error"></small>
                 </div>
             </div>
-            <div class="d-flex flex-row ">
+            <div class="d-flex flex-row justify-content-between my-input">
                 <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
                     <label for="quantity" style="font-weight: bolder">Quantity</label>
                     <input type="number" class="form-control quantity" name="quantity">
@@ -75,9 +75,9 @@
             </div>
 
             <div class="form-group m-2 d-flex flex-row col-md-6"  style=" background-color:white" >
-                <button class="btn btn-success btn-2x" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
+                <button class="btn btn-success btn-2x m-2" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
             </div>
-            <p>Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
+            <p class="m-3">Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
         </div>
     </form>
 </div>
@@ -90,9 +90,9 @@
     <div class="modal-dialog " style="background-color:white" >
         <div class="modal-content" >
             <div class="modal-header bg-darkgreen">
-                <h4 class="modal-title  text-white" id="staticBackdropLabel">Your Grocery List</h4>
+                <h4 class="modal-title  text-white" id="staticBackdropLabel">Items In Your Grocery List</h4>
             </div>
-            <div class="modal-body mt-0"> <span>Items In Your Grocery List</span>
+            <div class="modal-body mt-0">
                 <div class="mt-3">
                     <table class="table caption-top">
                         <tbody id="items-list">
@@ -374,11 +374,26 @@
                 customClass: 'swal-wide',
             });
             flatpickr("#expiry_date", {
-                enableTime: true,
+                enableTime: false,
                 dateFormat: "Y-m-d H:i",
                 minDate:"today"
             });
     }
 
+</script>
+
+<script>
+    function mediaWatcherFunction(mediaWatcher) {
+        if (mediaWatcher.matches) {
+            $(".my-input").removeClass("flex-row");
+            $(".my-input").addClass("flex-column");
+        } else {
+            $(".my-input").addClass("flex-row");
+            $(".my-input").removeClass("flex-column");
+        }
+    }
+    var mediaWatcher = window.matchMedia("(max-width: 800px)");
+    mediaWatcherFunction(mediaWatcher);
+    mediaWatcher.addListener(mediaWatcherFunction);
 </script>
 @endsection
