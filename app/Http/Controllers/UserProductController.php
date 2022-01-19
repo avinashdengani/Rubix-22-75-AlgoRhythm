@@ -92,4 +92,16 @@ class UserProductController extends Controller
         $storeroomProduct->delete();
 
     }
+    public function markAsPurchased(Request $request, User $user, Product $product)
+    {
+        $storedProduct = Storeroom::where('user_id', auth()->user()->id)
+                                ->where('product_id', $product->id)->first();
+        $storedProduct->update([
+            'isPurchased' => Storeroom::PURCHASED,
+            'expiry_date' => $request->expiry_date
+        ]);
+
+        session()->flash('success', 'Product Added In Your Storeroom!');
+        return redirect()->back();
+    }
 }

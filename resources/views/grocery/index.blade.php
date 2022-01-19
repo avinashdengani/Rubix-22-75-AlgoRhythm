@@ -109,6 +109,7 @@
                                     <td>{{ $list->product->name }}</td>
                                     <td>{{ $list->quantity }} {{ $list->unit->name }} </td>
                                     <td>
+                                        <button type="button" class="btn btn-outline-primary" onclick="swalFireForMarkAsPurchased('{{ $list->product->id}}')"><i class="fas fa-check fa-sm"> </i> </button>
                                         <button type="button" class="btn btn-outline-danger" onclick="deleteProductAjax(`{{ route('users.products.destroy', [auth()->user()->id, $list->product->id]) }}`, ` {{route('user.getGroceryList')}}`, `{{ auth()->user()->id }}`, `{{ csrf_token() }}`)"> <i class="fas fa-trash fa-sm"> </i> </button>
                                         <button type="button" class="btn btn-outline-warning" onclick="swalFireForEditGrocery('{{ $list->product->id}}', '{{$list->quantity}}')"> <i class="fas fa-pencil fa-sm"> </i> </button>
                                     </td>
@@ -177,6 +178,7 @@
                         <td>${data[i]['product']['name']}</td>
                         <td>${data[i]['quantity']} ${data[i]['unit']['name']} </td>
                         <td>
+                            <button type="button" class="btn btn-outline-primary" onclick="swalFireForMarkAsPurchased('${data[i]['product']['id']}')"><i class="fas fa-check fa-sm"> </i> </button>
                             <button type="button" class="btn btn-outline-danger" onclick="deleteProductAjax('${route}', '${routeForGroceryList}', '${user_id}', '${csrf_token}')"> <i class="fas fa-trash fa-sm"> </i> </button>
                             <button type="button" class="btn btn-outline-warning" onclick="swalFireForEditGrocery(${data[i]['product']['id']}, '${data[i]['quantity']}')"> <i class="fas fa-pencil fa-sm"> </i> </button>
                             </td>
@@ -302,7 +304,7 @@
                         @enderror
                     </div>
 
-                    <button class="btn btn-success mt-3 " type="submit">Edit Changes</button>
+                    <button class="btn btn-success mt-3 " type="submit">Save</button>
                 </form>
                 `,
                 buttonsStyling: true,
@@ -340,5 +342,44 @@
             }
         },
     });
+</script>
+
+<script>
+    function swalFireForMarkAsPurchased(product_id)
+    {
+        let route = `{{ url('users/' . auth()->user()->id . '/products') }}` + `/` + product_id  + `/mark-as-purchased`;
+        Swal.fire({
+                icon: "",
+                html: `
+                <form action="${route}" method="POST" id="add-grocery-form" class="d-flex flex-column" style="overflow: hidden">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="">
+                        <label for="expiry_date"></label>
+                        <input
+                            type="text"
+                            style="background-color: white;"
+                            placeholder="Select Expiry Date"
+                            class="form-control"
+                            name="expiry_date"
+                            value="{{ old('expiry_date') }}"
+                            id="expiry_date">
+                    </div>
+                        <button class="btn btn-success mt-3 " type="submit">Edit Changes</button>
+                </form>
+                `,
+                buttonsStyling: true,
+                showCancelButton: true,
+                showConfirmButton: false,
+                customClass: 'swal-wide',
+            });
+            flatpickr("#expiry_date", {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                minDate:"today"
+            });
+    }
+
 </script>
 @endsection
