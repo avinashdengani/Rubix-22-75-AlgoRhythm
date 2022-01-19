@@ -139,7 +139,7 @@ h1 {
                 </div>
                 <div class="row flex-center">
                     <div>
-                        <a href="#add-product-in-storeroom-form" class="btn bg-lime float-end mb-3 mt-3" id="add-items-btn">
+                        <a href="#add-product-in-storeroom-form" class="btn bg-darkgreen text-white float-end mb-3 mt-3" id="add-items-btn">
                             <i class="fa fa-plus me-2" style="font-size: 12px;"></i>Add Item
                         </a>
                     </div>

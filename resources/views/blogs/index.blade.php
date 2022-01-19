@@ -88,7 +88,7 @@
                         <p class="small text-muted m-0">Cuisine: {{$recipe->cuisineType}}</p>
                         <p class="small text-muted m-0">Dish Type: {{$recipe->dishType}}</p>
                         <p class="small text-muted m-0">Meal Type: {{$recipe->mealType}}</p>
-                        <p class="small text-muted m-0">Posted on {{$recipe->created_date}}</p>
+                        <p class="small text-muted m-0">Posted at {{$recipe->created_date}}</p>
                         <a class="btn btn-success" href="{{route('blogs.show', $recipe->id)}}" target="_blank" style="width:100%;">Read More</a>
                     </div>
                 </div>

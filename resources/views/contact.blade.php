@@ -144,7 +144,7 @@
      <div class="col-md-3 col-sm-6">
         <div class="card card-block">
        
-            <img src="images/ui/basic.png" alt="Photo of sunset">
+            <img src="images/ui/avinash.png" alt="Photo of sunset">
             <h5 class="card-title text-center mt-3 mb-3">Avinash Dengani</h5>
         
         </div>
@@ -152,14 +152,14 @@
      <div class="col-md-3 col-sm-6">
        <div class="card card-block">
        
-     <img src="images/ui/basic.png" alt="Photo of sunset">
+     <img src="images/ui/tushar.jpeg" alt="Photo of sunset">
          <h5 class="card-title text-center mt-3 mb-3">Tushar Budhwani</h5>
         
    </div>
      </div>
      <div class="col-md-3 col-sm-6">
        <div class="card card-block">
-     <img src="images/ui/basic.png" alt="Photo of sunset">
+     <img src="images/ui/rahul.png" alt="Photo of sunset">
          <h5 class="card-title text-center mt-3 mb-3">Rahul Jethani</h5>
         
    </div>

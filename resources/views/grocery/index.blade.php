@@ -17,6 +17,10 @@
         .swal-wide{
             width:400px !important;
         }
+
+        label,p{
+            color: white;
+        }
     </style>
 @endsection
 
@@ -28,15 +32,15 @@
         <p class="font-italic mb-0" style="font-size: 1.5rem;  text-shadow: 5px 5px 10px black;">Making Grocery Shopping Easier</p>
     </div>
 </div>
-<div class="container">
+<div class="container bg-lightgreen mt-4">
     <form id="add-product-in-grocery-form" action="#" method="POST" style="overflow: hidden" class="col-md-12">
 
 
         <div class="m-5">
             <div class="d-flex flex-row justify-content-between my-input">
                 {{-- Dropdown --}}
-                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
-                    <label for="category_id" style="font-weight: bolder">Select Category</label>
+                <div class="form-group bg-lightgreen col-md-6 m-2 p-2 " >
+                    <label for="category_id bg-lightgreen" style="font-weight: bolder ">Select Category</label>
                     <select name="category_id" id="category_id" class="form-control select2 category_id">
                         <option></option>
                         @foreach ($categories as $category)
@@ -46,7 +50,7 @@
                         <small id="emailHelp" class="form-text text-danger category_id_error"></small>
                 </div>
                 {{-- Dropdown --}}
-                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                <div class="form-group bg-lightgreen col-md-6 m-2 p-2 " >
                     <label for="product_id" style="font-weight: bolder">Add Items to Grocery List</label>
                     <select name="product_id" id="product_id" class="form-control select2 product_id">
                         <option></option>
@@ -55,14 +59,14 @@
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between my-input">
-                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                <div class="form-group bg-lightgreen col-md-6 m-2 p-2 "  >
                     <label for="quantity" style="font-weight: bolder">Quantity</label>
                     <input type="number" class="form-control quantity" name="quantity">
                     <small id="emailHelp" class="form-text text-danger quantity_error"></small>
                 </div>
 
                     {{-- Dropdown --}}
-                <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
+                <div class="form-group bg-lightgreen col-md-6 m-2 p-2 "  >
                     <label for="unit_id" style="font-weight: bolder">Unit</label>
                     <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
                     <option></option>
@@ -74,10 +78,10 @@
                 </div>
             </div>
 
-            <div class="form-group m-2 d-flex flex-row col-md-6"  style=" background-color:white" >
+            <div class="form-group bg-lightgreen m-2 d-flex flex-row col-md-6"   >
                 <button class="btn btn-success btn-2x m-2" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
             </div>
-            <p class="m-3">Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
+            <p class="m-3">Didn't find product in list?<button class="btn btn-link text-white" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
         </div>
     </form>
 </div>
