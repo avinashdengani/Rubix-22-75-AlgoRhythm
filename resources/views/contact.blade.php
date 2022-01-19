@@ -166,7 +166,7 @@
      </div>
     <div class="col-md-3 col-sm-6">
         <div class="card card-block">
-            <img src="images/ui/basic.png" alt="Photo of sunset">
+            <img src="images/ui/nandini.jpg" alt="Photo of sunset">
             <h5 class="card-title text-center mt-3 mb-3">Nandini Gawankar</h5>
         </div>
     </div>    

@@ -469,6 +469,12 @@
                     },
                     recipe:{
                         required: true,
+                    },
+                    'healthlabel_id[]': {
+                        required: true
+                    },
+                    image: {
+                        required: true
                     }
 
                 },

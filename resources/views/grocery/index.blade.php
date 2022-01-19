@@ -54,7 +54,7 @@
                         <small id="emailHelp" class="form-text text-danger product_id_error"></small>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row ">
                 <div class="form-group col-md-6 m-2 p-2 " style=" background-color:white" >
                     <label for="quantity" style="font-weight: bolder">Quantity</label>
                     <input type="number" class="form-control quantity" name="quantity">
@@ -74,11 +74,10 @@
                 </div>
             </div>
 
-            <div class="form-group m-2 p-2 d-flex flex-row justify-content-between col-md-6"  style=" background-color:white" >
-                <button class="btn btn-success btn-sm" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">Submit</button>
-
-                <p>Didn't found product in list?<button class="btn btn-link m-0 p-0" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
+            <div class="form-group m-2 d-flex flex-row col-md-6"  style=" background-color:white" >
+                <button class="btn btn-success btn-2x" id="add-product-in-grocery" type="button" onclick="submitGroceryListForm(`{{route('users.products.store', auth()->user()->id)}}`, `{{ auth()->user()->id }}`,  `{{route('user.getGroceryList')}}`, `{{ csrf_token() }}`);">SUBMIT</button>
             </div>
+            <p>Didn't find product in list?<button class="btn btn-link text-darkgreen" type="button" class="add-product-btn" onclick="swalFireForAddProduct()">Click here</button></p>
         </div>
     </form>
 </div>
@@ -90,8 +89,8 @@
     </div>
     <div class="modal-dialog " style="background-color:white" >
         <div class="modal-content" >
-            <div class="modal-header">
-                <h4 class="modal-title" id="staticBackdropLabel">Your Grocery List</h4>
+            <div class="modal-header bg-darkgreen">
+                <h4 class="modal-title  text-white" id="staticBackdropLabel">Your Grocery List</h4>
             </div>
             <div class="modal-body mt-0"> <span>Items In Your Grocery List</span>
                 <div class="mt-3">

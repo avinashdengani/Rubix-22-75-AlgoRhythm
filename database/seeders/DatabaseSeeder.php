@@ -104,7 +104,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Unit::create([
-            'name' => 'litres'
+            'name' => 'g'
+        ]);
+
+        Unit::create([
+            'name' => 'ml'
+        ]);
+
+        Unit::create([
+            'name' => 'l'
+        ]);
+
+        Unit::create([
+            'name' => 'unit'
         ]);
     }
 }
