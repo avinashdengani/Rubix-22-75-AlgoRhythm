@@ -39,7 +39,25 @@ class UserProductController extends Controller
         }
 
         return false;
-        
+    }
+
+    public function update(Request $request, User $user, Product $product)
+    {
+        $rules = [
+            'quantity' => 'required|numeric',
+            'unit_id' => 'required|exists:units,id'
+        ];
+        $this->validate($request, $rules);
+
+        $storedProduct = Storeroom::where('product_id', $product->id)->where('user_id', auth()->user()->id)->first();
+
+        $storedProduct->update([
+            'quantity' => $request->quantity,
+            'unit_id' => $request->unit_id
+        ]);
+
+        session()->flash('success', 'Product Updated Successfully');
+        return redirect()->back();
     }
     public function grocery()
     {
