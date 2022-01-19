@@ -77,7 +77,7 @@
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('nutritions.index') }}">{{ __('Nutritions') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('login') }}">{{ __('Grocery List') }}</a>
+                                <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('grocery.index') }}">{{ __('Grocery List') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black h5 font-weight-bolder" href="{{ route('recipes.index') }}">{{ __('Recipes') }}</a>
