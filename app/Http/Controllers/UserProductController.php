@@ -203,7 +203,28 @@ class UserProductController extends Controller
         session()->flash('success', 'Product Marked as Consumed!');
         return redirect()->back();
     }
-}
+
+    public function recommendationProducts(User $user){
+        $storeroomProducts = Storeroom::where('user_id', $user->id)
+                                    ->isPurchased()
+                                    ->with('product')
+                                    ->get();
+        
+        $productsInCategories = [];
+        if(count($storeroomProducts) > 0){
+            foreach($storeroomProducts as $storeroomProduct){
+                array_push($productsInCategories, $storeroomProduct->product->category->products);
+            }   
+        }else{
+            $categories = Category::all()->random(5);
+            foreach($categories as $category){
+                array_push($productsInCategories, $category->products);
+            }
+        }
+    
+        return $productsInCategories;
+    }
+}   
 
 
 
