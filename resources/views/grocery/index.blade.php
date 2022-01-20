@@ -289,8 +289,8 @@
                         @method('PUT')
 
                         <div class="row">
-                            <div class="form-group " style=" background-color:white" >
-                                <label for="quantity" style="font-weight: bolder" class="m-2">Quantity</label>
+                            <div class="form-group text-black" style=" background-color:white" >
+                                <label for="quantity" style="font-weight: bolder" class="m-2 text-black">Quantity</label>
                                 <input
                                     type="number"
                                     class="form-control quantity"
@@ -305,7 +305,7 @@
                         <div class="row">
                             {{-- Dropdown --}}
                             <div class="form-group " style=" background-color:white" >
-                                <label for="unit_id" style="font-weight: bolder" class="m-2">Unit</label>
+                                <label for="unit_id" style="font-weight: bolder" class="m-2 text-black">Unit</label>
                                 <select name="unit_id" id="unit_id" class="form-control select2 unit_id">
                                 <option></option>
                                 @foreach ($units as $unit)
