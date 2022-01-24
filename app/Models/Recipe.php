@@ -39,4 +39,8 @@ class Recipe extends Model
     {
         return $this->belongsToMany(Healthlabel::class)->withTimestamps();
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

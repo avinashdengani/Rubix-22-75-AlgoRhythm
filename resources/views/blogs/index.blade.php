@@ -85,11 +85,17 @@
                         <p class="mb-2 mt-2 text-dark font-weight-bolder">
                             <strong>{{ $recipe->name }}</strong>
                         </p>
+                        <p class="small text-muted m-0 d-flex flex-row justify-content-between">
+                            <span class="likes-count-{{$recipe->id}}">Likes: {{$recipe->likes}}</span>
+                            <a class="nav-link m-0 p-1" onclick="likeBlog({{ $recipe->id }})" style="cursor: pointer">
+                                <i class="fas fa-heart fa-lg likes-btn-{{$recipe->id}}" ></i>
+                            </a>
+                        </p>
                         <p class="small text-muted m-0">Cuisine: {{$recipe->cuisineType}}</p>
                         <p class="small text-muted m-0">Dish Type: {{$recipe->dishType}}</p>
                         <p class="small text-muted m-0">Meal Type: {{$recipe->mealType}}</p>
                         <p class="small text-muted m-0">Posted at {{$recipe->created_date}}</p>
-                        <a class="btn btn-success" href="{{route('blogs.show', $recipe->id)}}" target="_blank" style="width:100%;">Read More</a>
+                        <a class="btn btn-success mt-2" href="{{route('blogs.show', $recipe->id)}}" target="_blank" style="width:100%;">Read More</a>
                     </div>
                 </div>
             </div>
@@ -109,4 +115,39 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        let csrf_token = '{{ csrf_token() }}';
+        function likeBlog(id) {
+            let route = "{{url('blogs')}}" + '/' + id + '/like';
+            let successMessage = "Blog was liked successfully!";
+            ajaxForLikeAndDislikeBlog(route, csrf_token, successMessage, id);
+        }
+        function dislikeBlog(id) {
+            let route = "{{url('blogs')}}" + '/' + id + '/dislike';
+            let successMessage = "Blog was disliked successfully!";
+            ajaxForLikeAndDislikeBlog(route, csrf_token, successMessage, id);
+        }
+
+        function ajaxForLikeAndDislikeBlog(route, csrf_token, successMessage, id) {
+            $.ajax({
+                type: 'POST',
+                url: route,
+                data: {
+                    _method: 'PUT',
+                    _token: csrf_token
+                },
+                success: function (data){
+                    // popUpMessage('bg-success', successMessage);
+                    $(".likes-count-" + id).html("Likes: " + data);
+                    $(".likes-btn-" + id).addClass('text-danger')
+                },
+                error: function (e){
+                    popUpMessage('bg-danger', " Some error occured! Please try again later.");
+                }
+            });
+        }
+    </script>
 @endsection

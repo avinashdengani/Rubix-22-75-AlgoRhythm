@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getImageAttribute()
+    {
+        return "https://ui-avatars.com/api/?name={$this->name}&rounded=true&size=30";
+    }
+
     // RELATIONSHIPS
     public function recipes()
     {
